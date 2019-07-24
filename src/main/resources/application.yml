@@ -1,0 +1,34 @@
+# 数据库敏感内容加密
+jasypt:
+  encryptor:
+    password: glasswall
+    
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.glass.entity
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+# 端口配置  
+server:
+  port: 8989
+  servlet:
+    context-path: /glass-wall
+    session:
+      timeout: 3600s
+    jsp:
+      init-parameters:
+        development: true
+        
+# 整合jsp  
+spring:
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+  profiles:
+    active: dev
+#文件上传
+  servlet:
+    multipart:
+      max-file-size: 30Mb      
+      max-request-size: 200Mb   

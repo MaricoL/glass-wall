@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.sensor.GyroDao">
+
+	<resultMap id="sensor_gyro" type="com.glass.entity.sensor.Gyro">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="uuid" property="uuid" jdbcType="VARCHAR" />
+		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR" />
+		<result column="x_value" property="xvalue" jdbcType="VARCHAR" />
+		<result column="y_value" property="yvalue" jdbcType="VARCHAR" />
+		<result column="z_value" property="zvalue" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
+		<!-- <result column="agreement" property="agreement"
+			jdbcType="VARCHAR" /> -->
+	</resultMap>
+	<select id="getSensorGyroList" resultMap="sensor_gyro" parameterType="com.glass.entity.sensor.Gyro">
+		select * from sensor_gyro as t
+		<where>
+			<if test="sensorName != null and  sensorName != ''">
+				t.sensor_name = #{sensorName}
+			</if>
+		</where>
+	</select>
+
+	<select id="getGyroCountManage" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			sensor_name as name,
+		SUM(MONTH(create_time) = 1) as January,
+		SUM(MONTH(create_time) = 2) as February,
+		SUM(MONTH(create_time) = 3) as March,
+		SUM(MONTH(create_time) = 4) as April,
+		SUM(MONTH(create_time) = 5) as May,
+		SUM(MONTH(create_time) = 6) as June,
+		SUM(MONTH(create_time) = 7) as July,
+		SUM(MONTH(create_time) = 8) as August,
+		SUM(MONTH(create_time) = 9) as September,
+		SUM(MONTH(create_time) = 10) as October,
+		SUM(MONTH(create_time) = 11) as November,
+		SUM(MONTH(create_time) = 12) as December
+		from sensor_gyro
+		GROUP BY sensor_name
+	</select>
+
+	
+	
+	
+</mapper>

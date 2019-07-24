@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.cq.StockStatisticsCqDao" >
+  <resultMap id="BaseResultMap" type="com.glass.entity.cq.StockStatisticsCq" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="comp_id" property="compId" jdbcType="VARCHAR" />
+    <result column="invest_comp_id" property="investCompId" jdbcType="VARCHAR" />
+    <result column="invest_comp_name" property="investCompName" jdbcType="VARCHAR" />
+    <result column="sub_contribution_total" property="subContributionTotal" jdbcType="DECIMAL" />
+    <result column="actual_contribution_total" property="actualContributionTotal" jdbcType="DECIMAL" />
+    <result column="stock_percent" property="stockPercent" jdbcType="DECIMAL" />
+    <result column="invest_type" property="investType" jdbcType="VARCHAR" />
+    <result column="comp_uscd" property="compUscd" jdbcType="VARCHAR" />
+    <result column="invest_comp_uscd" property="investCompUscd" jdbcType="VARCHAR" />
+		<result column="createPersonName" property="createPersonName"
+			jdbcType="VARCHAR" />
+		<result column="createPersonId" property="createPersonId"
+			jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate"
+			jdbcType="VARCHAR" />
+		<result column="lastModifyPersonId"
+			property="lastModifyPersonId" jdbcType="VARCHAR" />
+		<result column="lastModifyPersonName"
+			property="lastModifyPersonName" jdbcType="VARCHAR" />
+		<result column="lastModifyDate" property="lastModifyDate"
+			jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BIT" />
+		<result column="approvalState" property="approvalState"
+			jdbcType="VARCHAR" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comp_id, invest_comp_id, invest_comp_name, sub_contribution_total, actual_contribution_total, 
+    stock_percent, createPersonName, createPersonId, createDate, lastModifyPersonId, 
+    lastModifyPersonName, lastModifyDate, isDel, approvalState, invest_type, comp_uscd, 
+    invest_comp_uscd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cq_stock_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  	<!-- 根据工商ID查找股权统计信息 -->
+	<select id="getStockStatisticsByComId"
+		resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from
+		cq_stock_statistics t where t.comp_id = #{id} and t.isDel = 0
+		order by
+		t.stock_percent DESC
+	</select>
+	
+	<!-- 根据产权ID查找股权统计信息导出用（通过审核的前3条） -->
+	<select id="get3StockStatisticsByComId"
+		resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from
+		cq_stock_statistics t where t.comp_id = #{id} 
+		and t.isDel = 0 and t.approvalState = '3'
+		order by
+		t.stock_percent DESC
+		limit 0,3
+	</select>
+	
+	<!-- 根据产权ID查找股权统计信息导出用（通过审核的第1条集团内数据） -->
+	<select id="getJtnStockStatisticsByComId"
+		resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from
+		cq_stock_statistics t where t.comp_id = #{id} 
+		and t.isDel = 0 and t.approvalState = '3' and t.invest_type = '2'
+		order by
+		t.stock_percent DESC
+		limit 0,1
+	</select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cq_stock_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  	<!-- 删除股权统计信息 -->
+	<delete id="deleteByComId"
+		parameterType="java.lang.Integer">
+		DELETE FROM cq_stock_statistics WHERE comp_id=#{id}
+	</delete>
+  
+  <insert id="insert" parameterType="com.glass.entity.cq.StockStatisticsCq" >
+    insert into cq_stock_statistics (id, comp_id, invest_comp_id, 
+      invest_comp_name, sub_contribution_total, actual_contribution_total, 
+      stock_percent, createPersonName, createPersonId, 
+      createDate, lastModifyPersonId, lastModifyPersonName, 
+      lastModifyDate, isDel, approvalState, 
+      invest_type, comp_uscd, invest_comp_uscd
+      )
+    values (#{id,jdbcType=INTEGER}, #{compId,jdbcType=VARCHAR}, #{investCompId,jdbcType=VARCHAR}, 
+      #{investCompName,jdbcType=VARCHAR}, #{subContributionTotal,jdbcType=DECIMAL}, #{actualContributionTotal,jdbcType=DECIMAL}, 
+      #{stockPercent,jdbcType=DECIMAL}, #{createPersonName,jdbcType=VARCHAR}, #{createPersonId,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR}, #{lastModifyPersonId,jdbcType=VARCHAR}, #{lastModifyPersonName,jdbcType=VARCHAR}, 
+      #{lastModifyDate,jdbcType=VARCHAR}, #{isDel,jdbcType=BIT}, #{approvalState,jdbcType=VARCHAR}, 
+      #{investType,jdbcType=VARCHAR}, #{compUscd,jdbcType=VARCHAR}, #{investCompUscd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.glass.entity.cq.StockStatisticsCq" >
+    insert into cq_stock_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="compId != null" >
+        comp_id,
+      </if>
+      <if test="investCompId != null" >
+        invest_comp_id,
+      </if>
+      <if test="investCompName != null" >
+        invest_comp_name,
+      </if>
+      <if test="subContributionTotal != null" >
+        sub_contribution_total,
+      </if>
+      <if test="actualContributionTotal != null" >
+        actual_contribution_total,
+      </if>
+      <if test="stockPercent != null" >
+        stock_percent,
+      </if>
+      <if test="createPersonName != null" >
+        createPersonName,
+      </if>
+      <if test="createPersonId != null" >
+        createPersonId,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="lastModifyPersonId != null" >
+        lastModifyPersonId,
+      </if>
+      <if test="lastModifyPersonName != null" >
+        lastModifyPersonName,
+      </if>
+      <if test="lastModifyDate != null" >
+        lastModifyDate,
+      </if>
+      <if test="isDel != null" >
+        isDel,
+      </if>
+      <if test="approvalState != null" >
+        approvalState,
+      </if>
+      <if test="investType != null" >
+        invest_type,
+      </if>
+      <if test="compUscd != null" >
+        comp_uscd,
+      </if>
+      <if test="investCompUscd != null" >
+        invest_comp_uscd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="compId != null" >
+        #{compId,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompId != null" >
+        #{investCompId,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompName != null" >
+        #{investCompName,jdbcType=VARCHAR},
+      </if>
+      <if test="subContributionTotal != null" >
+        #{subContributionTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="actualContributionTotal != null" >
+        #{actualContributionTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="stockPercent != null" >
+        #{stockPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="createPersonName != null" >
+        #{createPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonId != null" >
+        #{lastModifyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonName != null" >
+        #{lastModifyPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="approvalState != null" >
+        #{approvalState,jdbcType=VARCHAR},
+      </if>
+      <if test="investType != null" >
+        #{investType,jdbcType=VARCHAR},
+      </if>
+      <if test="compUscd != null" >
+        #{compUscd,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompUscd != null" >
+        #{investCompUscd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.glass.entity.cq.StockStatisticsCq" >
+    update cq_stock_statistics
+    <set >
+      <if test="compId != null" >
+        comp_id = #{compId,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompId != null" >
+        invest_comp_id = #{investCompId,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompName != null" >
+        invest_comp_name = #{investCompName,jdbcType=VARCHAR},
+      </if>
+      <if test="subContributionTotal != null" >
+        sub_contribution_total = #{subContributionTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="actualContributionTotal != null" >
+        actual_contribution_total = #{actualContributionTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="stockPercent != null" >
+        stock_percent = #{stockPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="createPersonName != null" >
+        createPersonName = #{createPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        createPersonId = #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonId != null" >
+        lastModifyPersonId = #{lastModifyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonName != null" >
+        lastModifyPersonName = #{lastModifyPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null" >
+        lastModifyDate = #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        isDel = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="approvalState != null" >
+        approvalState = #{approvalState,jdbcType=VARCHAR},
+      </if>
+      <if test="investType != null" >
+        invest_type = #{investType,jdbcType=VARCHAR},
+      </if>
+      <if test="compUscd != null" >
+        comp_uscd = #{compUscd,jdbcType=VARCHAR},
+      </if>
+      <if test="investCompUscd != null" >
+        invest_comp_uscd = #{investCompUscd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comp_id = #{compId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.glass.entity.cq.StockStatisticsCq" >
+    update cq_stock_statistics
+    set comp_id = #{compId,jdbcType=VARCHAR},
+      invest_comp_id = #{investCompId,jdbcType=VARCHAR},
+      invest_comp_name = #{investCompName,jdbcType=VARCHAR},
+      sub_contribution_total = #{subContributionTotal,jdbcType=DECIMAL},
+      actual_contribution_total = #{actualContributionTotal,jdbcType=DECIMAL},
+      stock_percent = #{stockPercent,jdbcType=DECIMAL},
+      createPersonName = #{createPersonName,jdbcType=VARCHAR},
+      createPersonId = #{createPersonId,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=VARCHAR},
+      lastModifyPersonId = #{lastModifyPersonId,jdbcType=VARCHAR},
+      lastModifyPersonName = #{lastModifyPersonName,jdbcType=VARCHAR},
+      lastModifyDate = #{lastModifyDate,jdbcType=VARCHAR},
+      isDel = #{isDel,jdbcType=BIT},
+      approvalState = #{approvalState,jdbcType=VARCHAR},
+      invest_type = #{investType,jdbcType=VARCHAR},
+      comp_uscd = #{compUscd,jdbcType=VARCHAR},
+      invest_comp_uscd = #{investCompUscd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  	<!-- 修改股权统计信息审核状态 -->
+	<update id="updateStockStatisticsStateByComId"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		update cq_stock_statistics
+		<set>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			<if test="approvalState != null">
+				approvalState = #{approvalState},
+			</if>
+		</set>
+		where comp_id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

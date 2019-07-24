@@ -1,0 +1,1598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.cq.CqDao">
+	<resultMap id="comBasicInfoMap"
+		type="com.glass.entity.cq.CompanyBasicInfoCq">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="establishment_time"
+			property="establishmentTime" jdbcType="VARCHAR" />
+		<result column="checkTime" property="checkTime"
+			jdbcType="VARCHAR" />
+		<result column="uscd" property="uscd" jdbcType="VARCHAR" />
+		<result column="reg_number" property="regNumber"
+			jdbcType="VARCHAR" />
+		<result column="tin" property="tin" jdbcType="VARCHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="chName" property="chName" jdbcType="VARCHAR" />
+		<result column="enName" property="enName" jdbcType="VARCHAR" />
+		<result column="comp_profile" property="compProfile"
+			jdbcType="VARCHAR" />
+		<result column="regist_capital" property="registCapital"
+			jdbcType="VARCHAR" />
+		<result column="operations_status" property="operationsStatus"
+			jdbcType="VARCHAR" />
+		<result column="comp_type" property="compType"
+			jdbcType="VARCHAR" />
+		<result column="industry" property="industry"
+			jdbcType="VARCHAR" />
+		<result column="region" property="region" jdbcType="VARCHAR" />
+		<result column="bus_reg_status" property="busRegStatus"
+			jdbcType="VARCHAR" />
+		<result column="reg_authority" property="regAuthority"
+			jdbcType="VARCHAR" />
+		<result column="person_amount" property="personAmount"
+			jdbcType="VARCHAR" />
+		<result column="is_holding" property="isHolding"
+			jdbcType="VARCHAR" />
+		<result column="runTime" property="runTime" jdbcType="VARCHAR" />
+		<result column="endTime" property="endTime" jdbcType="VARCHAR" />
+		<result column="legal_name" property="legalName"
+			jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="website" property="website" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="isHistory" property="isHistory"
+			jdbcType="VARCHAR" />
+		<result column="version" property="version" jdbcType="VARCHAR" />
+		<result column="isLastest" property="isLastest"
+			jdbcType="VARCHAR" />
+		<result column="last_version_id" property="lastVersionId"
+			jdbcType="VARCHAR" />
+		<result column="createPersonName" property="createPersonName"
+			jdbcType="VARCHAR" />
+		<result column="createPersonId" property="createPersonId"
+			jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate"
+			jdbcType="VARCHAR" />
+		<result column="lastModifyPersonId"
+			property="lastModifyPersonId" jdbcType="VARCHAR" />
+		<result column="lastModifyPersonName"
+			property="lastModifyPersonName" jdbcType="VARCHAR" />
+		<result column="lastModifyDate" property="lastModifyDate"
+			jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BIT" />
+		<result column="approvalState" property="approvalState"
+			jdbcType="VARCHAR" />
+		<result column="is_registration" property="isRegistration"
+			jdbcType="VARCHAR" />
+		<result column="merge_reports" property="mergeReports"
+			jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="reasonFile" property="reasonFile"
+			jdbcType="VARCHAR" />
+		<result column="bussiness_range" property="bussinessRange"
+			jdbcType="VARCHAR" />
+		<result column="abbreviation" property="abbreviation"
+			jdbcType="VARCHAR" />
+		<result column="off_address" property="offAddress"
+			jdbcType="VARCHAR" />
+		<result column="currency_type" property="currencyType"
+			jdbcType="VARCHAR" />
+		<result column="rmb_after_dep" property="rmbAfterDep"
+			jdbcType="DECIMAL" />
+		<result column="revoke_date" property="revokeDate"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="stockBasicInfoMap"
+		type="com.glass.entity.cq.StockBasicInfoCq">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="comp_id" property="compId" jdbcType="VARCHAR" />
+		<result column="comp_uscd" property="compUscd"
+			jdbcType="VARCHAR" />
+		<result column="invest_comp_id" property="investCompId"
+			jdbcType="VARCHAR" />
+		<result column="invest_comp_name" property="investCompName"
+			jdbcType="VARCHAR" />
+		<result column="invest_comp_uscd" property="investCompUscd"
+			jdbcType="VARCHAR" />
+		<result column="invest_date" property="investDate"
+			jdbcType="VARCHAR" />
+		<result column="sub_contribution" property="subContribution"
+			jdbcType="DECIMAL" />
+		<result column="sub_date" property="subDate" jdbcType="VARCHAR" />
+		<result column="actual_contribution"
+			property="actualContribution" jdbcType="DECIMAL" />
+		<result column="actual_date" property="actualDate"
+			jdbcType="VARCHAR" />
+		<result column="stock_percent" property="stockPercent"
+			jdbcType="DECIMAL" />
+		<result column="is_group" property="isGroup" jdbcType="VARCHAR" />
+		<result column="createPersonName" property="createPersonName"
+			jdbcType="VARCHAR" />
+		<result column="createPersonId" property="createPersonId"
+			jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate"
+			jdbcType="VARCHAR" />
+		<result column="lastModifyPersonId"
+			property="lastModifyPersonId" jdbcType="VARCHAR" />
+		<result column="lastModifyPersonName"
+			property="lastModifyPersonName" jdbcType="VARCHAR" />
+		<result column="lastModifyDate" property="lastModifyDate"
+			jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BIT" />
+		<result column="approvalState" property="approvalState"
+			jdbcType="VARCHAR" />
+		<result column="invest_type" property="investType"
+			jdbcType="VARCHAR" />
+		<result column="sub_type" property="subType" jdbcType="VARCHAR" />
+		<result column="actual_type" property="actualType"
+			jdbcType="VARCHAR" />
+		<result column="currency_type" property="currencyType"
+			jdbcType="VARCHAR" />
+		<result column="subscribed_currency_type"
+			property="subscribedCurrencyType" jdbcType="VARCHAR" />
+		<result column="rmb_after_dep" property="rmbAfterDep"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<resultMap id="stockChangeMap"
+		type="com.glass.entity.cq.StockChange">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="comp_id" property="compId" jdbcType="VARCHAR" />
+		<result column="comp_name" property="compName"
+			jdbcType="VARCHAR" />
+		<result column="comp_uscd" property="compUscd"
+			jdbcType="VARCHAR" />
+		<result column="old_sto" property="oldSto" jdbcType="VARCHAR" />
+		<result column="new_sto" property="newSto" jdbcType="VARCHAR" />
+		<result column="time" property="time" jdbcType="VARCHAR" />
+		<result column="createPersonName" property="createPersonName"
+			jdbcType="VARCHAR" />
+		<result column="createPersonId" property="createPersonId"
+			jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate"
+			jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BIT" />
+	</resultMap>
+
+	<resultMap id="cqInfoExcel"
+		type="com.glass.entity.cq.CqInfoExcel">
+		<result column="compId" property="compId" jdbcType="VARCHAR" />
+		<result column="chName" property="chName" jdbcType="VARCHAR" />
+		<result column="rn" property="rn" jdbcType="INTEGER" />
+		<result column="uscd" property="uscd" jdbcType="VARCHAR" />
+		<result column="registCapital" property="registCapital"
+			jdbcType="DECIMAL" />
+		<result column="legalName" property="legalName"
+			jdbcType="VARCHAR" />
+		<result column="busRegStatus" property="busRegStatus"
+			jdbcType="VARCHAR" />
+		<result column="regAuthority" property="regAuthority"
+			jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="establishmentTime" property="establishmentTime"
+			jdbcType="VARCHAR" />
+		<result column="runPeriod" property="runPeriod"
+			jdbcType="VARCHAR" />
+		<result column="bussinessRange" property="bussinessRange"
+			jdbcType="VARCHAR" />
+		<result column="djgInfo" property="djgInfo" jdbcType="VARCHAR" />
+		<result column="isHolding1" property="isHolding1"
+			jdbcType="INTEGER" />
+		<result column="isHolding2" property="isHolding2"
+			jdbcType="INTEGER" />
+		<result column="isHolding3" property="isHolding3"
+			jdbcType="INTEGER" />
+		<result column="isMergeReports" property="isMergeReports"
+			jdbcType="VARCHAR" />
+		<result column="mergeReports" property="mergeReports"
+			jdbcType="INTEGER" />
+		<result column="isRegistration1" property="isRegistration1"
+			jdbcType="VARCHAR" />
+		<result column="isRegistration2" property="isRegistration2"
+			jdbcType="INTEGER" />
+		<result column="operationsStatus" property="operationsStatus"
+			jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="totalAssets" property="totalAssets"
+			jdbcType="DECIMAL" />
+		<result column="totalLiabilities" property="totalLiabilities"
+			jdbcType="DECIMAL" />
+		<result column="netAssets" property="netAssets"
+			jdbcType="DECIMAL" />
+		<result column="mainBusinessIncome"
+			property="mainBusinessIncome" jdbcType="DECIMAL" />
+		<result column="totalProfit" property="totalProfit"
+			jdbcType="DECIMAL" />
+		<result column="financingSituation"
+			property="financingSituation" jdbcType="DECIMAL" />
+		<result column="economicActivityStatus"
+			property="economicActivityStatus" jdbcType="DECIMAL" />
+		<result column="reportType" property="reportType"
+			jdbcType="VARCHAR" />
+		<result column="hrCount" property="hrCount" jdbcType="INTEGER" />
+		<result column="investCompName1" property="investCompName1"
+			jdbcType="VARCHAR" />
+		<result column="investCompName2" property="investCompName2"
+			jdbcType="VARCHAR" />
+		<result column="investCompName3" property="investCompName3"
+			jdbcType="VARCHAR" />
+		<result column="stockPercent1" property="stockPercent1"
+			jdbcType="DECIMAL" />
+		<result column="stockPercent2" property="stockPercent2"
+			jdbcType="DECIMAL" />
+		<result column="stockPercent3" property="stockPercent3"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<!-- 删除文件信息 -->
+	<delete id="deleteFileByTypeIdAndComId"
+		parameterType="java.lang.Integer">
+		DELETE FROM sys_file WHERE type_id=#{typeId}
+		and
+		release_id = #{comId}
+	</delete>
+	<!-- 根据查询条件获取产权基本信息列表 -->
+	<select id="getComBasicInfoByConditions"
+		resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t left outer join sys_manage_tree
+		tree on t.uscd = tree.credit_code
+		<where>
+			<!-- t.isDel = 0 and t.isHistory = '0' and t.isLastest = '1' -->
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t.chName like #{chName}
+			</if>
+			<if test="operationsStatus != null and  operationsStatus != ''">
+				<bind name="operationsStatus" value="operationsStatus" />
+				and t.operations_status = #{operationsStatus}
+			</if>
+			<if test="busRegStatus != null and  busRegStatus != ''">
+				<bind name="busRegStatus" value="busRegStatus" />
+				and t.bus_reg_status = #{busRegStatus}
+			</if>
+			<if test="isDel != null and  isDel != ''">
+				<bind name="isDel" value="isDel" />
+				and t.isDel = #{isDel}
+			</if>
+			<if test="isHistory != null and  isHistory != ''">
+				<bind name="isHistory" value="isHistory" />
+				and t.isHistory = #{isHistory}
+			</if>
+			<if test="approvalState != null and  approvalState != ''">
+				<bind name="approvalState" value="approvalState" />
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+			<if test="uscd != null and  uscd != ''">
+				<bind name="uscd" value="uscd" />
+				and t.uscd like #{uscd}
+			</if>
+			<if test="compList != null and  compList.size > 0">
+				and t.uscd in
+				<foreach collection="compList" index="index" item="item"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		<!-- order by t.createDate DESC -->
+		order by t.bus_reg_status asc , tree.vcshoworder asc
+	</select>
+
+	<!-- 根据查询条件获取产权基本信息历史列表 -->
+	<select id="getHisComBasicInfoByConditions"
+		resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t
+		<where>
+			t.isDel = 0 and t.isHistory = '1'
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t.chName like #{chName}
+			</if>
+			<if test="operationsStatus != null and  operationsStatus != ''">
+				<bind name="operationsStatus" value="operationsStatus" />
+				and t.operations_status = #{operationsStatus}
+			</if>
+			<if test="version != null and  version != ''">
+				<bind name="version" value="version" />
+				and t.version = #{version}
+			</if>
+		</where>
+		order by t.bus_reg_status asc
+	</select>
+
+	<!-- 根据查询条件获取产权基本信息审核列表 -->
+	<select id="getComBasicInfoByChkConditions"
+		resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t left outer join sys_manage_tree
+		tree on t.uscd = tree.credit_code
+		<where>
+			t.approvalState != '1'
+			<!-- t.isDel = 0 and t.approvalState != '1' and t.isHistory = '0' and 
+				t.isLastest = '1' -->
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t.chName like #{chName}
+			</if>
+			<if test="operationsStatus != null and  operationsStatus != ''">
+				<bind name="operationsStatus" value="operationsStatus" />
+				and t.operations_status = #{operationsStatus}
+			</if>
+			<if test="busRegStatus != null and  busRegStatus != ''">
+				<bind name="busRegStatus" value="busRegStatus" />
+				and t.bus_reg_status = #{busRegStatus}
+			</if>
+			<if test="approvalState != null and  approvalState != ''">
+				<bind name="approvalState" value="approvalState" />
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="isDel != null and  isDel != ''">
+				<bind name="isDel" value="isDel" />
+				and t.isDel = #{isDel}
+			</if>
+			<if test="isHistory != null and  isHistory != ''">
+				<bind name="isHistory" value="isHistory" />
+				and t.isHistory = #{isHistory}
+			</if>
+			<if test="approvalState != null and  approvalState != ''">
+				<bind name="approvalState" value="approvalState" />
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+			<if test="compList != null and  compList.size > 0">
+				and t.uscd in
+				<foreach collection="compList" index="index" item="item"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		<!-- order by t.createDate DESC -->
+		order by t.approvalState asc, t.bus_reg_status asc , tree.vcshoworder
+		asc
+	</select>
+
+	<!-- 根据查询条件获取产权基本信息列表 -->
+	<select id="getAllComBasicCqInfo" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t left outer join sys_manage_tree
+		tree on t.uscd = tree.credit_code
+		<where>
+			<!-- t.isDel = 0 and t.isHistory = '0' and t.isLastest = '1' -->
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t.chName like #{chName}
+			</if>
+			<if test="operationsStatus != null and  operationsStatus != ''">
+				<bind name="operationsStatus" value="operationsStatus" />
+				and t.operations_status = #{operationsStatus}
+			</if>
+			<if test="busRegStatus != null and  busRegStatus != ''">
+				<bind name="busRegStatus" value="busRegStatus" />
+				and t.bus_reg_status = #{busRegStatus}
+			</if>
+			<if test="approvalState != null and  approvalState != ''">
+				<bind name="approvalState" value="approvalState" />
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="isDel != null and  isDel != ''">
+				<bind name="isDel" value="isDel" />
+				and t.isDel = #{isDel}
+			</if>
+			<if test="isHistory != null and  isHistory != ''">
+				<bind name="isHistory" value="isHistory" />
+				and t.isHistory = #{isHistory}
+			</if>
+
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+			<if test="compList != null and  compList.size > 0">
+				and t.uscd in
+				<foreach collection="compList" index="index" item="item"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		<!-- order by t.createDate DESC -->
+		order by t.bus_reg_status asc , tree.vcshoworder asc
+	</select>
+
+	<!-- 根据ID查找产权信息 -->
+	<select id="getCompanyBasicInfoCqById"
+		resultMap="comBasicInfoMap" parameterType="java.lang.Integer">
+		select * from
+		company_basic_info_cq t where t.id = #{id} and t.isDel = 0
+	</select>
+
+	<!-- 根据产权ID查找股权信息 -->
+	<select id="getStockBasicInfoByComId"
+		resultMap="stockBasicInfoMap" parameterType="java.lang.Integer">
+		select * from
+		stock_basic_info_cq t where t.comp_id = #{id} and t.isDel = 0 order by
+		t.stock_percent DESC
+
+	</select>
+
+	<!-- 检查是否存在重复统一社会代码及企业名称 -->
+	<select id="getComInfoExistCheck" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from
+		company_basic_info_cq t
+		<where>
+			t.isDel = 0
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="chName" />
+				and t.chName = #{chName}
+			</if>
+			<if test="uscd != null and  uscd != ''">
+				<bind name="uscd" value="uscd" />
+				and t.uscd = #{uscd}
+			</if>
+			<if test="id != null and  id != ''">
+				<bind name="id" value="id" />
+				and t.id != #{id}
+			</if>
+		</where>
+	</select>
+
+	<select id="getExportInfo" resultMap="cqInfoExcel"
+		parameterType="java.util.Map">
+		SELECT 
+		@rownum :=@rownum + 1 AS rn,
+		q.id compId,
+		q.chName,
+		q.uscd,
+		q.regist_capital registCapital,
+		q.legal_name legalName,
+		q.busRegStatus,
+		q.reg_authority regAuthority,
+		q.address,
+		q.establishment_time establishmentTime,
+		CASE
+		WHEN (
+		trim(q.runTime) != ''
+		OR trim(q.endTime) != ''
+		) THEN
+		concat(q.runTime, '至', q.endTime)
+		ELSE
+		q.runTime
+		END AS runPeriod,
+		q.bussiness_range bussinessRange,
+		CASE
+		WHEN q.is_holding = '1' THEN
+		1
+		ELSE
+		0
+		END AS isHolding1,
+		CASE
+		WHEN q.is_holding = '2' THEN
+		1
+		ELSE
+		0
+		END AS isHolding2,
+		CASE
+		WHEN q.is_holding = '3' THEN
+		1
+		ELSE
+		0
+		END AS isHolding3,
+		CASE
+		WHEN q.merge_reports = '1' THEN
+		'是'
+		ELSE
+		'否'
+		END AS isMergeReports,
+		CASE
+		WHEN q.merge_reports = '1' THEN
+		1
+		ELSE
+		0
+		END AS mergeReports,
+		CASE
+		WHEN q.is_registration = '1' THEN
+		'是'
+		ELSE
+		'否'
+		END AS isRegistration1,
+		CASE
+		WHEN q.is_registration = '1' THEN
+		1
+		ELSE
+		0
+		END AS isRegistration2,
+		q.operationsStatus,
+		s. LEVEL,
+		h.total_number hrCount,
+		f.total_assets totalAssets,
+		f.total_liabilities totalLiabilities,
+		f.net_assets netAssets,
+		f.main_business_income mainBusinessIncome,
+		f.total_profit totalProfit,
+		f.financing_situation financingSituation,
+		CASE
+		WHEN f.economic_activity_status = '1' THEN
+		'正常经营'
+		WHEN f.economic_activity_status = '2' THEN
+		'关停待销'
+		ELSE
+		''
+		END AS economicActivityStatus,
+		CASE
+		WHEN f.report_type = '1' THEN
+		'单体报表'
+		WHEN f.report_type = '2' THEN
+		'合并报表'
+		ELSE
+		''
+		END AS reportType,
+		d.djgInfo
+		FROM
+		(SELECT @rownum := 0) r,
+		(
+		SELECT
+		cq.*,
+		s1.`desc` busRegStatus,
+		s2.`desc` operationsStatus
+		FROM
+		company_basic_info_cq cq
+		LEFT JOIN sys_base s1 ON cq.bus_reg_status = s1.num
+		AND s1.`group` = 'busstatus'
+		LEFT JOIN sys_base s2 ON cq.operations_status = s2.num
+		AND s2.`group` = 'compstatus'
+		WHERE
+		cq.isDel = 0
+		AND cq.isHistory = '0'
+		AND cq.approvalState = '3'
+		AND cq.isLastest = '1'
+		) q
+		LEFT JOIN sys_stock_tree s ON q.uscd = s.credit_code
+		LEFT JOIN (
+		SELECT
+		h2.total_number,
+		h2.uscd
+		FROM
+		hr_totalnumber_info h2
+		LEFT JOIN (
+		SELECT
+		MAX(h1.lastModifyDate) lastModifyDate,
+		h1.uscd
+		FROM
+		hr_totalnumber_info h1
+		WHERE h1.isDel = 0 and h1.approvalState='3'
+		GROUP BY
+		h1.uscd
+		) h1 ON h1.uscd = h2.uscd
+		WHERE
+		h2.isDel = 0
+		AND IFNULL(h2.lastModifyDate, '') = IFNULL(h1.lastModifyDate, '')
+		AND h2.approvalState = '3'
+		AND h2.YEAR = substring_index(
+		#{hrDate}, '-', 1)
+		AND h2. MONTH =
+		substring_index(#{hrDate}, '-', -1)
+		) h ON q.uscd = h.uscd
+		LEFT JOIN (
+<!--		SELECT
+		f2.total_assets,
+		f2.total_liabilities,
+		f2.net_assets,
+		f2.main_business_income,
+		f2.total_profit,
+		f2.financing_situation,
+		f2.economic_activity_status,
+		f2.report_type,
+		f2.comp_uscd
+		FROM
+		fin_general_info f2
+		LEFT JOIN (
+		SELECT
+ 		max(f1.lastModifyDate) lastModifyDate,
+		f1.comp_uscd
+		FROM
+		fin_general_info f1
+		WHERE f1.isDel = 0 and f1.approvalState='3'
+		GROUP BY
+		f1.comp_uscd
+		) f1 ON f1.comp_uscd = f2.comp_uscd
+		WHERE
+		isDel = 0
+		AND f2.lastModifyDate = f1.lastModifyDate
+		AND approvalState = '3'
+		AND report_date = #{finDate} -->
+		
+				SELECT
+						f2.lastModifyDate,
+						f2.total_assets,
+						f2.total_liabilities,
+						f2.net_assets,
+						f2.main_business_income,
+						f2.total_profit,
+						f2.financing_situation,
+						f2.economic_activity_status,
+						f2.report_type,
+						f2.comp_uscd
+					FROM
+						fin_general_info f2
+					WHERE
+						f2.isDel = 0
+					AND f2.economic_activity_status = '1'
+					AND f2.approvalState = '3'
+					GROUP BY
+						f2.comp_uscd,
+						f2.total_assets,
+						f2.total_liabilities,
+						f2.net_assets,
+						f2.main_business_income,
+						f2.total_profit,
+						f2.financing_situation,
+						f2.economic_activity_status,
+						f2.report_type,
+						f2.lastModifyDate
+		
+		
+		
+		) f ON q.uscd = f.comp_uscd
+		LEFT JOIN (
+		SELECT
+		djg.comp_uscd,
+		group_concat(
+		concat(
+		djg.person_name,
+		'(',
+		base1.desc,
+		')'
+		)
+		) djgInfo
+		FROM
+		(
+		SELECT
+		djg.comp_id,
+		djg.comp_uscd,
+		djg.person_name,
+		djg.post_type
+		FROM
+		djg_manager_info djg
+		WHERE
+		djg.isDel = 0
+		AND djg.approvalState = '3'
+		AND djg.is_leave = '0'
+		) djg
+		LEFT JOIN (
+		SELECT
+		base.num,
+		base.`desc`
+		FROM
+		sys_base base
+		WHERE
+		base.group = 'job'
+		) base1 ON djg.post_type = base1.num
+		GROUP BY
+		djg.comp_uscd
+		) d ON q.uscd = d.comp_uscd
+		WHERE
+		q.uscd IN (
+		SELECT
+		t1.credit_code
+		FROM
+		sys_stock_tree t1
+		WHERE
+		t1.isDel = 0
+		<if test="organCode != null and  organCode != ''">
+			<bind name="organCode" value="organCode" />
+			and t1.organ_code like concat('%',#{organCode},'%')
+		</if>
+		)
+		<if test="compList != null and  compList.size > 0">
+			and q.uscd in
+			<foreach collection="compList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		order by q.bus_reg_status asc , s.vcshoworder asc
+	</select>
+
+	<!-- 修改产权信息审核状态 -->
+	<update id="updateComApprovalStateById"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		update company_basic_info_cq
+		<set>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			<if test="approvalState != null">
+				approvalState = #{approvalState},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 修改股权信息审核状态 -->
+	<update id="updateStockApprovalStateByComId"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		update stock_basic_info_cq
+		<set>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			<if test="approvalState != null">
+				approvalState = #{approvalState},
+			</if>
+		</set>
+		where comp_id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除产权信息 -->
+	<!-- <delete id="deleteComBasicInfoById" parameterType="java.lang.Integer"> 
+		DELETE FROM company_basic_info_cq WHERE id=#{id} </delete> -->
+	<update id="deleteComBasicInfoById"
+		parameterType="java.lang.Integer">
+		update company_basic_info_cq t
+		<set>t.approvalState="" , t.isHistory="1" , t.isLastest="0" ,isDel=1
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<!-- 删除股权信息 --><!-- <delete id="deleteStockInfoByComId" parameterType="java.lang.Integer"> 
+		DELETE FROM stock_basic_info_cq WHERE comp_id=#{id} </delete> -->
+	<update id="deleteStockInfoByComId"
+		parameterType="java.lang.Integer">
+		update stock_basic_info_cq t
+		<set>t.approvalState="" , isDel=1 </set>
+		where comp_id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 添加产权登记信息 -->
+	<insert id="addComBasicInfo" useGeneratedKeys="true"
+		keyProperty="id"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		insert into company_basic_info_cq
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="establishmentTime != null">
+				establishment_time,
+			</if>
+			<if test="checkTime != null">
+				checkTime,
+			</if>
+			<if test="uscd != null">
+				uscd,
+			</if>
+			<if test="regNumber != null">
+				reg_number,
+			</if>
+			<if test="tin != null">
+				tin,
+			</if>
+			<if test="orgCode != null">
+				org_code,
+			</if>
+			<if test="chName != null">
+				chName,
+			</if>
+			<if test="enName != null">
+				enName,
+			</if>
+			<if test="compProfile != null">
+				comp_profile,
+			</if>
+			<if test="registCapital != null">
+				regist_capital,
+			</if>
+			<if test="operationsStatus != null">
+				operations_status,
+			</if>
+			<if test="compType != null">
+				comp_type,
+			</if>
+			<if test="industry != null">
+				industry,
+			</if>
+			<if test="region != null">
+				region,
+			</if>
+			<if test="regAuthority != null">
+				reg_authority,
+			</if>
+			<if test="personAmount != null">
+				person_amount,
+			</if>
+			<if test="isHolding != null">
+				is_holding,
+			</if>
+			<if test="runTime != null">
+				runTime,
+			</if>
+			<if test="endTime != null">
+				endTime,
+			</if>
+			<if test="legalName != null">
+				legal_name,
+			</if>
+			<if test="sort != null">
+				sort,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="website != null">
+				website,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="isHistory != null">
+				isHistory,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="isLastest != null">
+				isLastest,
+			</if>
+			<if test="lastVersionId != null">
+				last_version_id,
+			</if>
+			<if test="createPersonName != null">
+				createPersonName,
+			</if>
+			<if test="createPersonId != null">
+				createPersonId,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId,
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName,
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate,
+			</if>
+			<if test="isDel != null">
+				isDel,
+			</if>
+			<if test="approvalState != null">
+				approvalState,
+			</if>
+			<if test="busRegStatus != null">
+				bus_reg_status,
+			</if>
+			<if test="bussinessRange != null">
+				bussiness_range,
+			</if>
+			<if test="isRegistration != null">
+				is_registration,
+			</if>
+			<if test="mergeReports != null">
+				merge_reports,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="abbreviation != null">
+				abbreviation,
+			</if>
+			<if test="offAddress != null">
+				off_address,
+			</if>
+			<if test="reasonFile != null">
+				reasonFile,
+			</if>
+			<if test="currencyType != null">
+				currency_type,
+			</if>
+			<if test="rmbAfterDep != null">
+				rmb_after_dep,
+			</if>
+			<if test="revokeDate != null">
+				revoke_date
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="establishmentTime != null">
+				#{establishmentTime},
+			</if>
+			<if test="checkTime != null">
+				#{checkTime},
+			</if>
+			<if test="uscd != null">
+				#{uscd},
+			</if>
+			<if test="regNumber != null">
+				#{regNumber},
+			</if>
+			<if test="tin != null">
+				#{tin},
+			</if>
+			<if test="orgCode != null">
+				#{orgCode},
+			</if>
+			<if test="chName != null">
+				#{chName},
+			</if>
+			<if test="enName != null">
+				#{enName},
+			</if>
+			<if test="compProfile != null">
+				#{compProfile},
+			</if>
+			<if test="registCapital != null">
+				#{registCapital},
+			</if>
+			<if test="operationsStatus != null">
+				#{operationsStatus},
+			</if>
+			<if test="compType != null">
+				#{compType},
+			</if>
+			<if test="industry != null">
+				#{industry},
+			</if>
+			<if test="region != null">
+				#{region},
+			</if>
+			<if test="regAuthority != null">
+				#{regAuthority},
+			</if>
+			<if test="personAmount != null">
+				#{personAmount},
+			</if>
+			<if test="isHolding != null">
+				#{isHolding},
+			</if>
+			<if test="runTime != null">
+				#{runTime},
+			</if>
+			<if test="endTime != null">
+				#{endTime},
+			</if>
+			<if test="legalName != null">
+				#{legalName},
+			</if>
+			<if test="sort != null">
+				#{sort},
+			</if>
+			<if test="tel != null">
+				#{tel},
+			</if>
+			<if test="website != null">
+				#{website},
+			</if>
+			<if test="email != null">
+				#{email},
+			</if>
+			<if test="address != null">
+				#{address},
+			</if>
+			<if test="isHistory != null">
+				#{isHistory},
+			</if>
+			<if test="version != null">
+				#{version},
+			</if>
+			<if test="isLastest != null">
+				#{isLastest},
+			</if>
+			<if test="lastVersionId != null">
+				#{lastVersionId},
+			</if>
+			<if test="createPersonName != null">
+				#{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				#{createPersonId},
+			</if>
+			<if test="createDate != null">
+				#{createDate},
+			</if>
+			<if test="lastModifyPersonId != null">
+				#{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				#{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				#{lastModifyDate},
+			</if>
+			<if test="isDel != null">
+				#{isDel},
+			</if>
+			<if test="approvalState != null">
+				#{approvalState},
+			</if>
+			<if test="busRegStatus != null">
+				#{busRegStatus},
+			</if>
+			<if test="bussinessRange != null">
+				#{bussinessRange},
+			</if>
+			<if test="isRegistration != null">
+				#{isRegistration},
+			</if>
+			<if test="mergeReports != null">
+				#{mergeReports},
+			</if>
+			<if test="remark != null">
+				#{remark},
+			</if>
+			<if test="abbreviation != null">
+				#{abbreviation},
+			</if>
+			<if test="offAddress != null">
+				#{offAddress},
+			</if>
+			<if test="reasonFile != null">
+				#{reasonFile},
+			</if>
+			<if test="currencyType != null">
+				#{currencyType},
+			</if>
+			<if test="rmbAfterDep != null">
+				#{rmbAfterDep},
+			</if>
+			<if test="revokeDate != null">
+				#{revokeDate}
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 添加股权基础信息 -->
+	<insert id="addStockBasicInfo"
+		parameterType="com.glass.entity.cq.StockBasicInfoCq">
+		insert into stock_basic_info_cq
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="compId != null">
+				comp_id,
+			</if>
+			<if test="compUscd != null">
+				comp_uscd,
+			</if>
+			<if test="investCompId != null">
+				invest_comp_id,
+			</if>
+			<if test="investCompName != null">
+				invest_comp_name,
+			</if>
+			<if test="investCompUscd != null">
+				invest_comp_uscd,
+			</if>
+			<if test="investDate != null">
+				invest_date,
+			</if>
+			<if test="subContribution != null">
+				sub_contribution,
+			</if>
+			<if test="subDate != null">
+				sub_date,
+			</if>
+			<if test="actualContribution != null">
+				actual_contribution,
+			</if>
+			<if test="actualDate != null">
+				actual_date,
+			</if>
+			<if test="stockPercent != null">
+				stock_percent,
+			</if>
+			<if test="isGroup != null">
+				is_group,
+			</if>
+			<if test="investType != null">
+				invest_type,
+			</if>
+			<if test="subType != null">
+				sub_type,
+			</if>
+			<if test="actualType != null">
+				actual_type,
+			</if>
+			<if test="currencyType != null">
+				currency_type,
+			</if>
+			<if test="createPersonName != null">
+				createPersonName,
+			</if>
+			<if test="createPersonId != null">
+				createPersonId,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId,
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName,
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate,
+			</if>
+			<if test="isDel != null">
+				isDel,
+			</if>
+			<if test="approvalState != null">
+				approvalState,
+			</if>
+			<if test="subscribedCurrencyType != null">
+				subscribed_currency_type,
+			</if>
+			<if test="rmbAfterDep != null">
+				rmb_after_dep
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="compId != null">
+				#{compId},
+			</if>
+			<if test="compUscd != null">
+				#{compUscd},
+			</if>
+			<if test="investCompId != null">
+				#{investCompId},
+			</if>
+			<if test="investCompName != null">
+				#{investCompName},
+			</if>
+			<if test="investCompUscd != null">
+				#{investCompUscd},
+			</if>
+			<if test="investDate != null">
+				#{investDate},
+			</if>
+			<if test="subContribution != null">
+				#{subContribution},
+			</if>
+			<if test="subDate != null">
+				#{subDate},
+			</if>
+			<if test="actualContribution != null">
+				#{actualContribution},
+			</if>
+			<if test="actualDate != null">
+				#{actualDate},
+			</if>
+			<if test="stockPercent != null">
+				#{stockPercent},
+			</if>
+			<if test="isGroup != null">
+				#{isGroup},
+			</if>
+			<if test="investType != null">
+				#{investType},
+			</if>
+			<if test="subType != null">
+				#{subType},
+			</if>
+			<if test="actualType != null">
+				#{actualType},
+			</if>
+			<if test="currencyType != null">
+				#{currencyType},
+			</if>
+			<if test="createPersonName != null">
+				#{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				#{createPersonId},
+			</if>
+			<if test="createDate != null">
+				#{createDate},
+			</if>
+			<if test="lastModifyPersonId != null">
+				#{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				#{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				#{lastModifyDate},
+			</if>
+			<if test="isDel != null">
+				#{isDel},
+			</if>
+			<if test="approvalState != null">
+				#{approvalState},
+			</if>
+			<if test="subscribedCurrencyType != null">
+				#{subscribedCurrencyType},
+			</if>
+			<if test="rmbAfterDep != null">
+				#{rmbAfterDep}
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 修改产权信息 -->
+	<update id="updateComBasicInfoById"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		update company_basic_info_cq
+		<set>
+			<if test="establishmentTime != null">
+				establishment_time = #{establishmentTime},
+			</if>
+			<if test="checkTime != null">
+				checkTime = #{checkTime},
+			</if>
+			<if test="uscd != null">
+				uscd = #{uscd},
+			</if>
+			<if test="regNumber != null">
+				reg_number = #{regNumber},
+			</if>
+			<if test="tin != null">
+				tin = #{tin},
+			</if>
+			<if test="orgCode != null">
+				org_code = #{orgCode},
+			</if>
+			<if test="chName != null">
+				chName = #{chName},
+			</if>
+			<if test="enName != null">
+				enName = #{enName},
+			</if>
+			<if test="compProfile != null">
+				comp_profile = #{compProfile},
+			</if>
+			<if test="registCapital != null">
+				regist_capital = #{registCapital},
+			</if>
+			<if test="operationsStatus != null">
+				operations_status = #{operationsStatus},
+			</if>
+			<if test="compType != null">
+				comp_type = #{compType},
+			</if>
+			<if test="industry != null">
+				industry = #{industry},
+			</if>
+			<if test="region != null">
+				region = #{region},
+			</if>
+			<if test="regAuthority != null">
+				reg_authority = #{regAuthority},
+			</if>
+			<if test="personAmount != null">
+				person_amount = #{personAmount},
+			</if>
+			<if test="isHolding != null">
+				is_holding = #{isHolding},
+			</if>
+			<if test="runTime != null">
+				runTime = #{runTime},
+			</if>
+			<if test="endTime != null">
+				endTime = #{endTime},
+			</if>
+			<if test="legalName != null">
+				legal_name = #{legalName},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="tel != null">
+				tel = #{tel},
+			</if>
+			<if test="website != null">
+				website = #{website},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="address != null">
+				address = #{address},
+			</if>
+			<if test="isHistory != null">
+				isHistory = #{isHistory},
+			</if>
+			<if test="version != null">
+				version = #{version},
+			</if>
+			<if test="isLastest != null">
+				isLastest = #{isLastest},
+			</if>
+			<if test="lastVersionId != null">
+				last_version_id = #{lastVersionId},
+			</if>
+			<if test="createPersonName != null">
+				createPersonName = #{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				createPersonId = #{createPersonId},
+			</if>
+			<if test="createDate != null">
+				createDate = #{createDate},
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			<if test="isDel != null">
+				isDel = #{isDel},
+			</if>
+			<if test="approvalState != null">
+				approvalState = #{approvalState},
+			</if>
+			<if test="busRegStatus != null">
+				bus_reg_status = #{busRegStatus},
+			</if>
+			<if test="bussinessRange != null">
+				bussiness_range = #{bussinessRange},
+			</if>
+			<if test="isRegistration != null">
+				is_registration = #{isRegistration},
+			</if>
+			<if test="mergeReports != null">
+				merge_reports = #{mergeReports},
+			</if>
+			<if test="remark != null">
+				remark = #{remark},
+			</if>
+			<if test="offAddress != null">
+				off_address = #{offAddress},
+			</if>
+			<if test="abbreviation != null">
+				abbreviation = #{abbreviation},
+			</if>
+			<if test="reasonFile != null">
+				reasonFile = #{reasonFile},
+			</if>
+			<if test="currencyType != null">
+				currency_type = #{currencyType},
+			</if>
+			<if test="rmbAfterDep != null">
+				rmb_after_dep = #{rmbAfterDep}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<select id="getComBasicToManageTree" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t
+		<where>
+			t.isDel = 0 and t.isHistory = '0' and t.approvalState = '3' and
+			t.isLastest = '1' and t.uscd is not null
+			and t.uscd not in (select
+			s.credit_code from sys_manage_tree s where s.isDel = 0 and
+			s.credit_code is not null)
+		</where>
+	</select>
+	<!-- 根据USCD查信息 -->
+	<select id="getCompInfoCqByUscd" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t
+		<where>
+			t.uscd = #{uscd}
+			<if test="id != null and  id != 0 ">
+				<bind name="id" value="id" />
+				and t.id = #{id}
+			</if>
+			<if test="isDel != null and  isDel != ''">
+				<bind name="isDel" value="isDel" />
+				and t.isDel = #{isDel}
+			</if>
+			<if test="isHistory != null and  isHistory != ''">
+				<bind name="isHistory" value="isHistory" />
+				and t.isHistory = #{isHistory}
+			</if>
+			<if test="approvalState != null and  approvalState != ''">
+				<bind name="approvalState" value="approvalState" />
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+		</where>
+		order by t.createDate desc
+	</select>
+	<select id="getUscdById" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from company_basic_info_cq t
+		<where>
+			<if test="id != null and  id != 0 ">
+				<bind name="id" value="id" />
+				and t.id = #{id}
+			</if>
+		</where>
+	</select>
+
+	<!-- 检查是否存在重复的企业名称 -->
+	<select id="getChNameExistCheck" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from
+		company_basic_info_cq t
+		<where>
+			t.isDel = 0
+			<if test="id != null and  id != ''">
+				<bind name="id" value="id" />
+				and t.id != #{id}
+			</if>
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="chName" />
+				and t.chName = #{chName}
+			</if>
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+		</where>
+	</select>
+
+	<!-- 检查是否存在重复统一社会代码 -->
+	<select id="getUscdExistCheck" resultMap="comBasicInfoMap"
+		parameterType="com.glass.entity.cq.CompanyBasicInfoCq">
+		select * from
+		company_basic_info_cq t
+		<where>
+			t.isDel = 0
+			<if test="id != null and  id != ''">
+				<bind name="id" value="id" />
+				and t.id != #{id}
+			</if>
+			<if test="uscd != null and  uscd != ''">
+				<bind name="uscd" value="uscd" />
+				and t.uscd = #{uscd}
+			</if>
+			<if test="isLastest != null and  isLastest != ''">
+				<bind name="isLastest" value="isLastest" />
+				and t.isLastest = #{isLastest}
+			</if>
+		</where>
+	</select>
+	<select id="getSumStock" resultMap="stockBasicInfoMap"
+		parameterType="com.glass.entity.cq.StockBasicInfoCq">
+		select
+		comp_id,invest_comp_id,invest_comp_name,comp_uscd,invest_comp_uscd,invest_type,SUM(sub_contribution)
+		as sub_contribution,SUM(actual_contribution) as actual_contribution
+		from stock_basic_info_cq where isDel = 0 and comp_id = #{compId} group
+		by
+		comp_id,invest_comp_id,invest_comp_name,comp_uscd,invest_comp_uscd,invest_type
+	</select>
+
+
+	<!-- 根据ID查找产权信息 -->
+	<select id="getStockChangeById" resultMap="stockChangeMap"
+		parameterType="java.lang.String">
+		select * from stock_change t where t.comp_uscd = #{uscd}
+		and t.isDel = 0
+	</select>
+
+	<!-- 修改产权信息审核状态 -->
+	<update id="UpdateStockChange"
+		parameterType="com.glass.entity.cq.StockChange">
+		update stock_change
+		<set>
+			<if test="_parameter != null">
+				isDel = 1
+			</if>
+		</set>
+		where comp_uscd = #{uscd,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 添加股权变动信息 -->
+	<insert id="insetStockChange"
+		parameterType="com.glass.entity.cq.StockChange">
+		insert into stock_change
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="compId != null">
+				comp_id,
+			</if>
+			<if test="compName != null">
+				comp_name,
+			</if>
+			<if test="compUscd != null">
+				comp_uscd,
+			</if>
+			<if test="oldSto != null">
+				old_sto,
+			</if>
+			<if test="newSto != null">
+				new_sto,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="createPersonName != null">
+				createPersonName,
+			</if>
+			<if test="createPersonId != null">
+				createPersonId,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="isDel != null">
+				isDel
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="compId != null">
+				#{compId},
+			</if>
+			<if test="compName != null">
+				#{compName},
+			</if>
+			<if test="compUscd != null">
+				#{compUscd},
+			</if>
+			<if test="oldSto != null">
+				#{oldSto},
+			</if>
+			<if test="newSto != null">
+				#{newSto},
+			</if>
+			<if test="time != null">
+				#{time},
+			</if>
+			<if test="createPersonName != null">
+				#{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				#{createPersonId},
+			</if>
+			<if test="createDate != null">
+				#{createDate},
+			</if>
+			<if test="isDel != null">
+				#{isDel}
+			</if>
+		</trim>
+	</insert>
+</mapper>

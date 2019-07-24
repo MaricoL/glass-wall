@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.system.SysBaseDao" >
+
+	<resultMap id="BaseResultMap" type="com.glass.entity.system.SysBase" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="num" property="num" jdbcType="VARCHAR" />
+		<result column="desc" property="desc" jdbcType="VARCHAR" />
+		<result column="group" property="group" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="seq" property="seq" jdbcType="INTEGER" />
+		<result column="pNum" property="pNum" jdbcType="VARCHAR" />
+		<result column="pNum" property="parentNum" jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BIT" />
+	</resultMap>
+	
+	<sql id="Base_Column_List" >
+		id, num, desc, group, remark
+	</sql>
+	
+	<select id="getbaseByConditions" resultMap="BaseResultMap" parameterType="com.glass.entity.system.SysBase" >
+		select * from sys_base t
+		<where>
+    		<if test="id != null and  id != ''">
+    			t.id = #{id}
+    		</if>
+    		<if test="num != null and  num != ''">
+    			and t.num = #{num}
+    		</if>
+    		<if test="desc != null and  desc != ''">
+    			and t.desc = #{desc}
+    		</if>
+    		<if test="remark != null and  remark != ''">
+    			and t.remark = #{remark}
+    		</if>
+    		<if test="group != null and  group != ''">
+    			and t.group = #{group}
+    		</if>
+    		<if test="seq != null and  seq != ''">
+    			and t.seq = #{seq}
+    		</if>
+    		<if test="pNum != null and  pNum != ''">
+    			and t.pNum = #{pNum}
+    		</if>
+    		 and isDel=0 
+    	</where>
+		
+		order by t.group,t.seq asc
+	</select>
+	
+	<select id="getbaseById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select * from sys_base t
+		where t.id = #{id} and isDel=0 
+	</select>
+	<!-- <select id="getremarks" resultMap="BaseResultMap">
+		select distinct remark from sys_base t
+	</select> -->
+	
+	<update id="delbaseById" parameterType="java.lang.Integer">
+		<!-- DELETE FROM sys_base WHERE id = #{id} -->
+		UPDATE sys_base set isDel=1 where id = #{id}
+	</update>
+	
+	<select id="getByGroup" resultMap="BaseResultMap" parameterType="java.lang.String" >
+		select * from sys_base t
+		where t.group = #{group} and isDel=0 
+		order by t.seq asc
+	</select>
+	
+	<select id="getByGroupAndParentNum" resultMap="BaseResultMap" parameterType="java.lang.String" >
+		select * from sys_base t
+		where t.group = #{group}
+		and t.pNum = #{parentNum} and isDel=0  
+		order by t.seq asc
+	</select>
+	
+	<select id="getByGroupAndDesc" resultMap="BaseResultMap" parameterType="java.lang.String" >
+		select * from sys_base t
+		where t.group = #{group} and isDel=0  
+		and t.desc = #{desc}
+	</select>
+	
+		<select id="getAll" resultMap="BaseResultMap" >
+		select * from sys_base t where isDel=0 
+	</select>
+  
+  	<select id="getMaxNumByGroup" resultType="java.lang.String" parameterType="java.lang.String" >
+		select t.num from sys_base t
+		where t.group = #{group} and isDel=0  
+		order by t.num desc limit 0,1
+	</select>
+	
+	<select id="getMaxSeqByGroup" resultType="java.lang.Integer" parameterType="java.lang.String" >
+		select t.seq from sys_base t
+		where t.group = #{group} and isDel=0 
+		order by t.seq desc limit 0,1
+	</select>
+	
+  <insert id="addSysBase" useGeneratedKeys="true"
+		keyProperty="id"
+		parameterType="com.glass.entity.system.SysBase" >
+    insert into sys_base 
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="desc != null" >
+        `desc`,
+      </if>
+      <if test="group != null" >
+        `group`,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="isDel != null" >
+        isDel,
+      </if>
+      <if test="pNum != null" >
+        pNum
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="num != null" >
+        #{num},
+      </if>
+      <if test="desc != null" >
+        #{desc},
+      </if>
+      <if test="group != null" >
+        #{group},
+      </if>
+      <if test="remark != null" >
+        #{remark},
+      </if>
+      <if test="seq != null" >
+        #{seq},
+      </if>
+      <if test="isDel != null" >
+        #{isDel},
+      </if>
+      <if test="pNum != null" >
+        #{pNum}
+      </if>
+    </trim>
+  </insert>
+  
+  
+   <!-- 修改BASE数据-->
+     <update id="updateSysbase" parameterType="com.glass.entity.system.SysBase">
+    	 update sys_base s
+        <set>
+            <if test="num != null" >s.num =#{num},</if>
+            <if test="desc != null" >s.`desc` =#{desc}, </if>
+            <if test="group != null" > s.`group`=#{group}, </if>
+            <if test="remark != null" >s.remark=#{remark}, </if>
+            <if test="seq != null" >s.seq=#{seq}, </if>
+            <if test="pNum != null" >s.pNum=#{pNum}</if>
+        </set>
+        where s.id = #{id,jdbcType=INTEGER}
+    </update> 
+  
+</mapper>

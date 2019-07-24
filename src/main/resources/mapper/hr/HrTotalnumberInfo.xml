@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.hr.HrDao">
+
+	<resultMap id="hrMap"
+		type="com.glass.entity.hr.HrTotalnumberInfo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="year" property="year" jdbcType="VARCHAR" />
+		<result column="month" property="month" jdbcType="VARCHAR" />
+		<result column="date" property="date" jdbcType="VARCHAR" />
+		<result column="comp_id" property="compId" jdbcType="VARCHAR" />
+		<result column="chName" property="chName" jdbcType="VARCHAR" />
+		<result column="uscd" property="uscd" jdbcType="VARCHAR" />
+		<result column="total_number" property="totalNumber"
+			jdbcType="VARCHAR" />
+			
+		<result column="leave_number" property="leaveNumber"
+			jdbcType="VARCHAR" />
+			
+		<result column="employee_number" property="employeeNumber"
+			jdbcType="VARCHAR" />
+		<result column="contract_worker_number"
+			property="contractWorkerNumber" jdbcType="VARCHAR" />
+		<result column="noncontract_worker_number"
+			property="noncontractWorkerNumber" jdbcType="VARCHAR" />
+		<result column="labor_dispatch_number"
+			property="laborDispatchNumber" jdbcType="VARCHAR" />
+		<result column="createPersonName" property="createPersonName"
+			jdbcType="VARCHAR" />
+		<result column="createPersonId" property="createPersonId"
+			jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate"
+			jdbcType="VARCHAR" />
+		<result column="lastModifyPersonId"
+			property="lastModifyPersonId" jdbcType="VARCHAR" />
+		<result column="lastModifyPersonName"
+			property="lastModifyPersonName" jdbcType="VARCHAR" />
+		<result column="lastModifyDate" property="lastModifyDate"
+			jdbcType="VARCHAR" />
+		<result column="isDel" property="isDel" jdbcType="BOOLEAN" />
+		<result column="approvalState" property="approvalState"
+			jdbcType="VARCHAR" />
+		<!-- <result column="agreement" property="agreement"
+			jdbcType="VARCHAR" /> -->
+	</resultMap>
+	
+
+	<!-- <select id ="agreementList" parameterType="java.lang.Integer" resultMap="hrMap">
+		select a.*,b.*,b.id id_examine,b.isdel isdel_examine,b.createPersonName createPersonName_examine,b.createPersonID createPersonID_examine,
+		b.lastModifyPersonID lastModifyPersonID_examine,b.lastModifyPersonName lastModifyPersonName_examine,b.lastModifyDate lastModifyDate_examine from 
+		(select t.*,t1.chName from hr_totalnumber_info t join company_basic_info_cq t1 on t.comp_id = t1.id) a 
+		left join sys_examine b on a.id = b.examentityid
+		where a.id = #{id}
+	</select> -->
+	
+	<!-- 根据year month comp_id 来判断数据库是否已有数据 -->
+	<select id="getHrWithTimeCompId" resultMap="hrMap"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		select t.*,t1.chName
+		from hr_totalnumber_info t join company_basic_info_cq t1 on t.comp_id = t1.id
+		<where>
+			<if test="compId != null and  compId != ''">
+				t.comp_id = #{compId}
+			</if>
+			<if test="year != null and  year != ''">
+				and t.year = #{year}
+			</if>
+			<if test="month != null and  month != ''">
+				and t.month = #{month}
+			</if>			
+		</where>
+	</select>
+	<!-- 根据查询条件获取用户列表 -->
+	<select id="getHr" resultMap="hrMap"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		select t.*,t1.chName
+		from hr_totalnumber_info t join company_basic_info_cq t1 on t.uscd = t1.uscd 
+		<where>
+			<!-- <if test="compId != null and  compId != ''">
+				<bind name="compId" value="'%' + compId + '%'" />
+				t.comp_id like #{compId}
+			</if> -->
+			<!-- t1.approvalState="3" and  t1.isHistory="0" and t1.isLastest="1" and --> t.isDel=0
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t1.chName like #{chName}
+			</if> 
+			<if test="year != null and  year != ''">
+				<bind name="year" value="'%' + year + '%'" />
+				and t.year like #{year}
+			</if>
+			<if test="month != null and  month != ''">
+				<bind name="month" value="'%' + month + '%'" />
+				and t.month like #{month}
+			</if>
+			<!-- <if test="isDel != null"> and t.isDel = #{isDel} </if> -->
+			<if test="approvalState != null and approvalState != ''">
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="compList != null and  compList.size > 0">
+				and t.uscd in 
+	          	<foreach collection="compList" index="index" item="item" open="(" separator="," close=")">  
+	            	#{item}  
+	        	</foreach>
+			</if>
+		</where>
+	</select>
+	<select id="getChkHr" resultMap="hrMap"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		select t.*,t1.chName
+		from hr_totalnumber_info t join company_basic_info_cq t1 on t.uscd = t1.uscd
+		<where>
+			t.approvalState != '1' and t1.approvalState="3" and  t1.isHistory="0" and t1.isLastest="1"  and t.isDel=0
+			<!-- <if test="compId != null and  compId != ''">
+				<bind name="compId" value="'%' + compId + '%'" />
+				t.comp_id like #{compId}
+			</if> -->
+			<if test="chName != null and  chName != ''">
+				<bind name="chName" value="'%' + chName + '%'" />
+				and t1.chName like #{chName}
+			</if> 
+			<if test="year != null and  year != ''">
+				<bind name="year" value="'%' + year + '%'" />
+				and t.year like #{year}
+			</if>
+			<if test="month != null and  month != ''">
+				<bind name="month" value="'%' + month + '%'" />
+				and t.month like #{month}
+			</if>
+			<!-- <if test="isDel != null"> and t.isDel = #{isDel} </if> -->
+			<if test="approvalState != null and approvalState != ''">
+				and t.approvalState = #{approvalState}
+			</if>
+			<if test="compList != null and  compList.size > 0">
+				and t.uscd in 
+	          	<foreach collection="compList" index="index" item="item" open="(" separator="," close=")">  
+	            	#{item}  
+	        	</foreach>
+			</if>
+		</where>
+	</select>
+	<!-- 根据ID查找人事信息()查看 -->
+	<select id="getHrInfoById" resultMap="hrMap" parameterType="java.lang.Integer">
+		select t.*,t1.chName from hr_totalnumber_info t join company_basic_info_cq t1 on t.uscd = t1.uscd where <!-- t.approvalState != '1' and --> t1.approvalState="3" and  t1.isHistory="0" and t1.isLastest="1" and t.id = #{id}
+	</select>
+	<!-- 新建Hr信息 -->
+	<insert id="addHr"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		insert into hr_totalnumber_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="year != null">
+				year,
+			</if>
+			<if test="month != null">
+				month,
+			</if>
+			<if test="compId != null">
+				comp_id,
+			</if>
+			<if test="totalNumber != null">
+				total_number,
+			</if>
+			
+			<if test="leaveNumber != null">
+				leave_number,
+			</if>
+			
+			<if test="employeeNumber != null">
+				employee_number,
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number,
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number,
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number,
+			</if>
+			<if test="createPersonName != null">
+				createPersonName,
+			</if>
+			<if test="createPersonId != null">
+				createPersonId,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId,
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName,
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate,
+			</if>
+			<if test="approvalState != null">
+				approvalState,
+			</if>
+			<if test="uscd != null">
+				uscd,
+			</if>
+			<if test="isDel != null">
+				isDel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="year != null">
+				#{year},
+			</if>
+			<if test="month != null">
+				#{month},
+			</if>
+			<if test="compId != null">
+				#{compId},
+			</if>
+			<if test="totalNumber != null">
+				#{totalNumber},
+				
+			</if>
+			
+			<if test="leaveNumber != null">
+				#{leaveNumber},
+			</if>
+			
+			<if test="employeeNumber != null">
+				#{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				#{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				#{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				#{laborDispatchNumber},
+			</if>
+			<if test="createPersonName != null">
+				#{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				#{createPersonId},
+			</if>
+			<if test="createDate != null">
+				#{createDate},
+			</if>
+			<if test="lastModifyPersonId != null">
+				${lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				#{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				#{lastModifyDate},
+			</if>
+			<if test="approvalState != null">
+				#{approvalState},
+			</if>
+			<if test="uscd != null">
+				#{uscd},
+			</if>
+			<if test="isDel != null">
+				#{isDel}
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 人事状态审核意见更改 -->
+	<update id="hrAgreement"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>
+			<!-- <if test="agreement != null">
+				agreement = #{agreement},
+			</if> -->
+			<if test="approvalState != null">
+				approvalState = #{approvalState},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 人事审核信息管理 审核  通过 -->
+	<update id = "passAgreementUpdateStatus" parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>			
+			<if test="year != null">
+				year = #{year},
+			</if>
+			<if test="month != null">
+				month = #{month},
+			</if>
+			<if test="compId != null">
+				comp_id = #{compId},
+			</if>
+			<if test="employeeNumber != null">
+				employee_number = #{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number = #{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number = #{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number = #{laborDispatchNumber},
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			approvalState = 3,
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 人事审核信息管理 审核  退回 -->
+	<update id = "backAgreementUpdateStatus" parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>
+		    <if test="year != null">
+				year = #{year},
+			</if>
+			<if test="month != null">
+				month = #{month},
+			</if>
+			<if test="compId != null">
+				comp_id = #{compId},
+			</if>
+			<if test="employeeNumber != null">
+				employee_number = #{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number = #{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number = #{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number = #{laborDispatchNumber},
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId = #{lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName = #{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate = #{lastModifyDate},
+			</if>
+			approvalState = 4
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 将审核信息插入表中 -->
+	<insert id="insertAgreementInfo">
+		insert into hr_agreement_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				hr_info_id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="result != null">
+				result,
+			</if>
+			<if test="opinion != null">
+				opinion,
+			</if>
+			
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="time != null">
+				#{time},
+			</if>
+			<if test="result != null">
+				#{result},
+			</if>
+			<if test="opinion != null">
+				#{opinion},
+			</if>
+			
+		</trim>
+	</insert>
+
+	<!-- 变更信息 -->
+	<update id="modifyHr" parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>
+			<if test="year != null">
+				year = #{year},
+			</if>
+			<if test="month != null">
+				month = #{month},
+			</if>
+			<if test="compId != null">
+				comp_id = #{compId},
+			</if>
+			<if test="employeeNumber != null">
+				employee_number = #{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number = #{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number = #{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number = #{laborDispatchNumber},
+			</if>
+
+			<if test="approvalState != null">
+				approvalState = #{approvalState}
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+	<!-- edit Hr信息 -->
+	<update id="updateHr"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>
+			<if test="year != null">
+				year = #{year},
+			</if>
+			<if test="month != null">
+				month = #{month},
+			</if>
+			<if test="compId != null">
+				comp_id = #{compId},
+			</if>
+			
+			<if test="totalNumber != null">
+				total_number = #{totalNumber},
+			</if>
+			<if test="leaveNumber != null">
+				leave_number = #{leaveNumber},
+			</if>
+			
+			<if test="employeeNumber != null">
+				employee_number = #{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number = #{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number = #{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number = #{laborDispatchNumber},
+			</if>
+			<if test="uscd != null">
+				uscd = #{uscd},
+			</if>
+			<if test="approvalState != null">
+				approvalState = 1
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<!-- 新增页面上报信息 -->
+	<insert id="submitHrInAddPage"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		insert into hr_totalnumber_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="year != null">
+				year,
+			</if>
+			<if test="month != null">
+				month,
+			</if>
+			<if test="compId != null">
+				comp_id,
+			</if>
+			<if test="totalNumber != null">
+				total_number,
+			</if>
+			
+			<if test="leaveNumber != null">
+				leave_number,
+			</if>
+			
+			<if test="employeeNumber != null">
+				employee_number,
+			</if>
+			<if test="contractWorkerNumber != null">
+				contract_worker_number,
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				noncontract_worker_number,
+			</if>
+			<if test="laborDispatchNumber != null">
+				labor_dispatch_number,
+			</if>
+			<if test="createPersonName != null">
+				createPersonName,
+			</if>
+			<if test="createPersonId != null">
+				createPersonId,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="lastModifyPersonId != null">
+				lastModifyPersonId,
+			</if>
+			<if test="lastModifyPersonName != null">
+				lastModifyPersonName,
+			</if>
+			<if test="lastModifyDate != null">
+				lastModifyDate,
+			</if>
+			<if test="approvalState != null">
+				approvalState,
+			</if>
+			<if test="uscd != null">
+				uscd,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="year != null">
+				#{year},
+			</if>
+			<if test="month != null">
+				#{month},
+			</if>
+			<if test="compId != null">
+				#{compId},
+			</if>
+			<if test="totalNumber != null">
+				#{totalNumber},
+			</if>
+			<if test="employeeNumber != null">
+				#{employeeNumber},
+			</if>
+			<if test="contractWorkerNumber != null">
+				#{contractWorkerNumber},
+			</if>
+			<if test="noncontractWorkerNumber != null">
+				#{noncontractWorkerNumber},
+			</if>
+			<if test="laborDispatchNumber != null">
+				#{laborDispatchNumber},
+			</if>
+			<if test="createPersonName != null">
+				#{createPersonName},
+			</if>
+			<if test="createPersonId != null">
+				#{createPersonId},
+			</if>
+			<if test="createDate != null">
+				#{createDate},
+			</if>
+			<if test="lastModifyPersonId != null">
+				${lastModifyPersonId},
+			</if>
+			<if test="lastModifyPersonName != null">
+				#{lastModifyPersonName},
+			</if>
+			<if test="lastModifyDate != null">
+				#{lastModifyDate},
+			</if>
+			<if test="approvalState != null">
+				#{approvalState},
+			</if>
+			<if test="uscd != null">
+				#{uscd}
+			</if>
+		</trim>
+	</insert>
+
+	<!-- <update id="submitHrInListPage"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		update hr_totalnumber_info
+		<set>
+			<if test="approvalState != null">
+				approvalState = 2
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update> -->
+	
+	<!-- 人事信息列表页面上报信息 -->
+	<update id="submitHrInfoInListPage"
+		parameterType="java.lang.Integer">
+		update hr_totalnumber_info
+		<set>
+			approvalState = 2
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+	<delete id="deleteHrInfo" parameterType="java.lang.Integer">
+		delete from hr_totalnumber_info where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+
+	<!-- 通过统一信用代码综合查询接口 -->
+	<select id="getHrByUscd" resultMap="hrMap"
+		parameterType="com.glass.entity.hr.HrTotalnumberInfo">
+		select t.* 
+		from hr_totalnumber_info t  
+		<where>
+			<!-- t1.isDel = 0 and t1.isHistory = '0' and t1.isLastest = '1'  -->
+			<if test="uscd != null and  uscd != ''">
+				<bind name="uscd" value="uscd" />
+				 t.uscd = #{uscd} 
+			</if> 
+			<if test="approvalState != null and  uscd != ''">
+				<bind name="approvalState" value="approvalState" />
+				 and t.approvalState = #{approvalState} 
+			</if> 
+		</where>
+		order by t.year DESC,t.month DESC  
+	</select>
+</mapper>

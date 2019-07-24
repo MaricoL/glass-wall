@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.check.IExamineDao" >
+  <resultMap id="BaseResultMap" type="com.glass.entity.check.SysExamine" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="examinestr" property="examineStr" jdbcType="VARCHAR" />
+    <result column="examresult" property="examResult" jdbcType="VARCHAR" />
+    <result column="examentityid" property="examentityId" jdbcType="INTEGER" />
+    <result column="examKind" property="examKind" jdbcType="INTEGER" />
+    <result column="isdel" property="isDel" jdbcType="INTEGER" />
+    <result column="createPersonName" property="createPersonName" jdbcType="VARCHAR" />
+    <result column="createPersonID" property="createPersonId" jdbcType="VARCHAR" />
+    <result column="createDate" property="createDate" jdbcType="VARCHAR" />
+    <result column="lastModifyPersonID" property="lastModifyPersonId" jdbcType="VARCHAR" />
+    <result column="lastModifyPersonName" property="lastModifyPersonName" jdbcType="VARCHAR" />
+    <result column="lastModifyDate" property="lastModifyDate" jdbcType="VARCHAR" />
+ 	
+
+  </resultMap>  
+  
+   <!-- 根据ID查找刑事案件信息（单个对象查看信息）   查看-->
+	<select id="getExamineById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from sys_examine  where id = #{id}
+	</select> 
+	
+	
+	  <!-- 审核通过  退回 examine -->
+  <update id="checkDjgApprovalState" parameterType="com.glass.entity.check.SysExamine">
+		update sys_examine 
+		<set >
+      <if test="examResult != null" >
+        examresult = #{examResult,jdbcType=VARCHAR},
+      </if>
+      <if test="examentityId != null" >
+        examentityid = #{examentityId,jdbcType=VARCHAR},
+      </if>
+      <if test="examKind != null" >
+        examKind = #{examKind,jdbcType=VARCHAR},
+      </if>
+      examinestr = #{examineStr},
+      createPersonName = #{createPersonName},
+		createDate = #{createDate},
+		lastModifyPersonName = #{lastModifyPersonName},
+		lastModifyDate = #{lastModifyDate}
+      </set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	 
+	 
+	 
+	 
+	 
+	 
+ <!-- 通用-查询审核信息列表 -->
+    <select id="getListExamine1" 
+    resultMap="BaseResultMap" 
+    parameterType="com.glass.entity.check.SysExamine" >
+    select * from sys_examine  t
+    <where>
+    t.isdel = 0 and   t.id = #{id}
+	<!-- <if test="examentityId != null and  examentityId != ''">
+				<bind name="examentityId" value="examentityId" />
+				and t.examentityid = #{examentityId}
+	</if> -->
+	<!-- <if test="examKind != null and  examKind != ''">
+				<bind name="examKind" value="examKind" />
+				and t.examKind = #{examKind}
+	</if> -->
+  </where>
+  order by  t.createDate DESC
+  </select>
+  
+  
+	<!-- ******************************************通用接口*********************************** -->	
+      
+    <resultMap id="ExamineMap" type="com.glass.entity.check.SysExamine" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="examinestr" property="examineStr" jdbcType="VARCHAR" />
+    <result column="examresult" property="examResult" jdbcType="VARCHAR" />
+    <result column="examentityid" property="examentityId" jdbcType="INTEGER" />
+    <result column="examKind" property="examKind" jdbcType="INTEGER" />
+    <result column="isdel" property="isDel" jdbcType="INTEGER" />
+    <result column="createPersonName" property="createPersonName" jdbcType="VARCHAR" />
+    <result column="createPersonID" property="createPersonId" jdbcType="VARCHAR" />
+    <result column="createDate" property="createDate" jdbcType="VARCHAR" />
+    <result column="lastModifyPersonID" property="lastModifyPersonId" jdbcType="VARCHAR" />
+    <result column="lastModifyPersonName" property="lastModifyPersonName" jdbcType="VARCHAR" />
+    <result column="lastModifyDate" property="lastModifyDate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 通用-查询审核信息列表 -->
+    <select id="getListExamine" 
+    resultMap="ExamineMap" 
+    parameterType="com.glass.entity.check.SysExamine" >
+    select * from sys_examine  t
+    <where>
+    t.isdel = 0 
+	<if test="examentityId != null and  examentityId != ''">
+				<bind name="examentityId" value="examentityId" />
+				and t.examentityid = #{examentityId}
+	</if>
+	<if test="examKind != null and  examKind != ''">
+				<bind name="examKind" value="examKind" />
+				and t.examKind = #{examKind}
+	</if>
+  </where>
+  order by  t.createDate DESC
+  </select>
+  
+  <!-- 通用-插入审核信息 -->
+  <insert id="saveExamine" parameterType="com.glass.entity.check.SysExamine" >
+    insert into sys_examine (id, examinestr, examresult, 
+      examentityid, examKind, isdel, 
+      createPersonName, createPersonID, createDate, 
+      lastModifyPersonID, lastModifyPersonName, 
+      lastModifyDate)
+    values (#{id,jdbcType=INTEGER}, #{examineStr,jdbcType=VARCHAR}, #{examResult,jdbcType=VARCHAR}, 
+      #{examentityId,jdbcType=INTEGER}, #{examKind,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, 
+      #{createPersonName,jdbcType=VARCHAR}, #{createPersonId,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{lastModifyPersonId,jdbcType=VARCHAR}, #{lastModifyPersonName,jdbcType=VARCHAR}, 
+      #{lastModifyDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.glass.entity.check.SysExamine" >
+    insert into sys_examine
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="examineStr != null" >
+        examinestr,
+      </if>
+      <if test="examResult != null" >
+        examresult,
+      </if>
+      <if test="examentityId != null" >
+        examentityid,
+      </if>
+      <if test="examKind != null" >
+        examKind,
+      </if>
+      <if test="isDel != null" >
+        isdel,
+      </if>
+      <if test="createPersonName != null" >
+        createPersonName,
+      </if>
+      <if test="createPersonId != null" >
+        createPersonID,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="lastModifyPersonId != null" >
+        lastModifyPersonID,
+      </if>
+      <if test="lastModifyPersonName != null" >
+        lastModifyPersonName,
+      </if>
+      <if test="lastModifyDate != null" >
+        lastModifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="examineStr != null" >
+        #{examineStr,jdbcType=VARCHAR},
+      </if>
+      <if test="examResult != null" >
+        #{examResult,jdbcType=VARCHAR},
+      </if>
+      <if test="examentityId != null" >
+        #{examentityId,jdbcType=INTEGER},
+      </if>
+      <if test="examKind != null" >
+        #{examKind,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonName != null" >
+        #{createPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonId != null" >
+        #{lastModifyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyPersonName != null" >
+        #{lastModifyPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+ 
+</mapper>
