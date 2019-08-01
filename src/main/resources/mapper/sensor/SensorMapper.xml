@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.glass.dao.sensor.SensorDao">
 
-	<resultMap id="sensor_accelation" type="com.glass.entity.sensor.Sensor">
+	<resultMap id="sensor" type="com.glass.entity.sensor.Sensor">
 		<result column="uuid" property="uuid" jdbcType="VARCHAR" />
 		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR" />
 		<association property="accelation" javaType="com.glass.entity.sensor.Accelation">
-			<result column="accelation_id"  property="id"  jdbcType="INTEGER"/>
+			<id column="accelation_id"  property="id"  jdbcType="INTEGER"/>
 			<result column="accelation_uuid" property="uuid" jdbcType="VARCHAR" />
 			<result column="accelation_sensorName" property="sensorName" jdbcType="VARCHAR" />
 			<result column="accelation_xvalue" property="xvalue" jdbcType="VARCHAR" />
@@ -16,16 +16,16 @@
 		</association>
 		
 		<association property="angle" javaType="com.glass.entity.sensor.Angle">
-			<result column="angle_id"  property="id"  jdbcType="INTEGER"/>
-			<result column="angle_uuid"  property="uuid"  jdbcType="INTEGER"/>
+			<id column="angle_id"  property="id"  jdbcType="INTEGER"/>
+			<result column="angle_uuid"  property="uuid"  jdbcType="VARCHAR"/>
 			<result column="angle_sensorName" property="sensorName" jdbcType="VARCHAR" />
 			<result column="angle_value" property="value" jdbcType="VARCHAR" />
 			<result column="angle_createTime" property="createTime" jdbcType="VARCHAR" />		
-		</association>
+		</association> 
 		
 		<association property="strain" javaType="com.glass.entity.sensor.Strain">
 			<result column="strain_id"  property="id"  jdbcType="INTEGER"/>
-			<result column="strain_uuid"  property="uuid"  jdbcType="INTEGER"/>
+			<result column="strain_uuid"  property="uuid"  jdbcType="VARCHAR"/>
 			<result column="strain_sensorName" property="sensorName" jdbcType="VARCHAR" />
 			<result column="strain_value" property="value" jdbcType="VARCHAR" />
 			<result column="strain_createTime" property="createTime" jdbcType="VARCHAR" />		
@@ -33,7 +33,7 @@
 		
 		<association property="temperture" javaType="com.glass.entity.sensor.Temperture">
 			<result column="temperture_id"  property="id"  jdbcType="INTEGER"/>
-			<result column="temperture_uuid"  property="uuid"  jdbcType="INTEGER"/>
+			<result column="temperture_uuid"  property="uuid"  jdbcType="VARCHAR"/>
 			<result column="temperture_sensorName" property="sensorName" jdbcType="VARCHAR" />
 			<result column="temperature_value" property="value" jdbcType="VARCHAR" />
 			<result column="temperature_createTime" property="createTime" jdbcType="VARCHAR" />		
@@ -41,17 +41,16 @@
 		
 		<association property="gyro" javaType="com.glass.entity.sensor.Gyro">
 			<result column="gyro_id"  property="id"  jdbcType="INTEGER"/>
-			<result column="gyro_uuid"  property="uuid"  jdbcType="INTEGER"/>
+			<result column="gyro_uuid"  property="uuid"  jdbcType="VARCHAR"/>
 			<result column="gyro_sensorName" property="sensorName" jdbcType="VARCHAR" />
 			<result column="gyro_xvalue" property="xvalue" jdbcType="VARCHAR" />
 			<result column="gyro_yvalue" property="yvalue" jdbcType="VARCHAR" />
 			<result column="gyro_zvalue" property="zvalue" jdbcType="VARCHAR" />
 			<result column="gyro_createTime" property="createTime" jdbcType="VARCHAR" />		
-		</association>
+		</association> 
 	</resultMap>
 	
-	
-	<select id="getSensorList" resultMap="sensor_accelation" parameterType="com.glass.entity.sensor.Sensor">
+	<select id="getSensorList" resultMap="sensor" parameterType="com.glass.entity.sensor.Sensor">
 		select a.uuid as uuid , a.sensor_name as sensor_name , a.id as accelation_id , a.uuid as accelation_uuid , a.sensor_name as accelation_sensorName , a.x_value as accelation_xvalue , a.y_value as accelation_yvalue , a.z_value as accelation_zvalue , a.create_time as accelation_createTime,
 		an.id as angle_id , an.uuid as angle_uuid , an.sensor_name as angle_sensorName ,an.value as angle_value , an.create_time as angle_createTime , 
 		st.id as strain_id , st.uuid as strain_uuid , st.sensor_name as strain_sensorName ,st.value as strain_value , st.create_time as strain_createTime,
@@ -67,7 +66,9 @@
 				 a.sensor_name=#{sensorName}
 			</if>
 		</where>
-	</select>	
+	</select>
+	
+
 	
 	
 </mapper>

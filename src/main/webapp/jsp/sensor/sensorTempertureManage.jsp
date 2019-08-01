@@ -52,10 +52,6 @@
 
 		<div class="clearfix"></div>
 <%-- 		<c:if test="${fn:contains(buttonSession,'work_hr_new')==true}"> --%>
-			<button class="but_add" type="button"
-				onclick="javascript:_editHrInfo();">
-				<i class="iconfont icon-xinzeng"></i>新增
-			</button>
 <%-- 		</c:if>
 
 		<c:if test="${fn:contains(buttonSession,'work_hr_query')==true}"> --%>

@@ -6,7 +6,9 @@
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="uuid" property="uuid" jdbcType="VARCHAR" />
 		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR" />
-		<result column="value" property="value" jdbcType="VARCHAR" />
+		<result column="value_one" property="valueone" jdbcType="VARCHAR" />
+	    <result column="value_two" property="valuetwo" jdbcType="VARCHAR" />
+		<result column="value_three" property="valuethree" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
 	</resultMap>
 	<select id="getAngleList" resultMap="sensor_angle" parameterType="com.glass.entity.sensor.Angle">
@@ -17,8 +19,7 @@
 			</if>
 		</where>
 	</select>
-	
-	
+		
 
 	<select id="getAngleCountManage" resultType="java.util.Map" parameterType="java.util.Map">
 		SELECT
@@ -36,7 +37,34 @@
 		SUM(MONTH(create_time) = 11) as November,
 		SUM(MONTH(create_time) = 12) as December
 		from sensor_angle
+		<where>
+			<if test="name != null and  name != ''">
+				sensor_name = #{name}
+			</if>
+		</where>
 		GROUP BY sensor_name
+	</select>
+	
+	<select id="syncAngleData" resultMap="sensor_angle" parameterType="map">
+			select * from sensor_angle
+		<where>
+			<if test="startTime == 'null'  and endTime == 'null'  and lastAngleId != null">
+				id > #{lastAngleId}
+			</if>
+			<if test="startTime != 'null' ">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') &gt;= #{startTime}
+			</if>
+			<if test="endTime != 'null' ">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 	&lt;= #{endTime}
+			</if>
+			<if test="sensorName != null">
+				and sensor_name = #{sensorName}
+			</if>
+		</where>
+		
+		<if test="endTime == 'null'">
+				limit 1
+		</if>
 	</select>
 
 	

@@ -36,7 +36,36 @@
 		SUM(MONTH(create_time) = 11) as November,
 		SUM(MONTH(create_time) = 12) as December
 		from sensor_strain
+		<where>
+			<if test="name != null and  name != ''">
+				sensor_name = #{name}
+			</if>
+		</where>
 		GROUP BY sensor_name
+	</select>
+	
+	<select id="syncStrainData" resultMap="sensor_angle" parameterType="map">
+		select * from sensor_strain 
+		<where>
+			<if test="startTime == 'null' and endTime == 'null' and lastStrainId != null">
+				and id > #{lastStrainId}
+			</if>
+			<if test="startTime != 'null'">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') &gt;= #{startTime}
+			</if>
+			<if test="endTime != 'null'">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 	&lt;= #{endTime}
+			</if>
+			<if test="sensorName != null">
+					and sensor_name = #{sensorName}
+			</if>
+		</where>
+
+		<if test="endTime == 'null'">
+				limit 1
+		</if>
+
+	
 	</select>
 	
 	

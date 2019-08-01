@@ -38,8 +38,34 @@
 		SUM(MONTH(create_time) = 10) as October,
 		SUM(MONTH(create_time) = 11) as November,
 		SUM(MONTH(create_time) = 12) as December
-		from sensor_accelation
+		from sensor_accelation 
+		<where>
+			<if test="name != null and  name != ''">
+				sensor_name = #{name}
+			</if>
+		</where>
 		GROUP BY sensor_name
+	</select>
+	
+	<select id="syncAccelationData" resultMap="sensor_accelation" parameterType="map">
+			select * from sensor_accelation 
+		<where>
+			<if test="startTime == 'null' and endTime == 'null'  and lastAccelationId != null">
+				id > #{lastAccelationId}
+			</if>
+			<if test="startTime != 'null' ">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') &gt;= #{startTime}
+			</if>
+			<if test="endTime != 'null' ">
+				and STR_TO_DATE(DATE_FORMAT(create_time, '%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') &lt;= #{endTime}
+			</if>
+			<if test="sensorName != null">
+				and sensor_name = #{sensorName}
+			</if>
+		</where>
+		<if test="endTime == 'null'">
+				limit 1
+		</if>
 	</select>
 	
 	

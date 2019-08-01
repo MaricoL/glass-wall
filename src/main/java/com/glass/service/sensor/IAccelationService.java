@@ -1,12 +1,21 @@
 package com.glass.service.sensor;
-import com.glass.util.PageBean;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.glass.entity.sensor.Accelation;
-import com.glass.entity.sensor.Angle;
+import com.glass.entity.sensor.StatisticalManagement;
+import com.glass.util.PageBean;
+
 public interface IAccelationService {
 	PageBean<Accelation> getSensorAccelationList(Accelation entity, Integer currentPage, Integer pageSize);
 
-	List<Object> getAccrelationCountManage(Accelation entity, Integer currentPage, Integer pageSize);
+	PageBean<StatisticalManagement> getAccrelationCountManage(String name, Integer currentPage, Integer pageSize);
+
+	List<Accelation> syncAccelationData(HashMap<String, Object> paramMap);
+
+	/*
+	 * List<Object> getAccrelationCountManage(Accelation entity, Integer
+	 * currentPage, Integer pageSize);
+	 */
 }

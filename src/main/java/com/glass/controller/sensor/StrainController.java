@@ -19,6 +19,7 @@ import com.glass.entity.check.SysExamine;
 import com.glass.entity.hr.HrTotalnumberInfo;
 import com.glass.entity.sensor.Accelation;
 import com.glass.entity.sensor.Angle;
+import com.glass.entity.sensor.StatisticalManagement;
 import com.glass.entity.sensor.Strain;
 import com.glass.entity.system.SysBase;
 import com.glass.entity.system.SysUser;
@@ -53,16 +54,16 @@ public class StrainController {
 	}
 	
 	@RequestMapping("/countManage")
-	public String strainCountManage(Strain entity, Integer currentPage, Map<String, Object> map,HttpServletRequest request){
+	public String strainCountManage(String name, Integer currentPage, Map<String, Object> map,HttpServletRequest request){
 		//HttpSession session = request.getSession();
 		//List<String> angleList = (ArrayList) session.getAttribute("angleSession");
 		//entity.setAngleList(angleList);
 		if (currentPage == null || currentPage == 0) {
 			currentPage = 1;
 		}
-		List<Object> list = strainService.getStrainCountManage(entity, currentPage, 10);
-		map.put("list", list);
-		map.put("conditionEntity", entity);
+		PageBean<StatisticalManagement> pageBean = strainService.getStrainCountManage(name, currentPage, 10);
+		map.put("pageBean", pageBean);
+		map.put("name", name);
 		return "sensor/strainCountManage";
 	}
 	

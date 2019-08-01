@@ -1,0 +1,65 @@
+.p1_margin{
+  margin: 0 3% 20px;
+}
+.top_left_p1 , .top_right_p1{
+  width: 48%;
+  float: left;
+  font-size: 20px;
+  margin: 0 0.5%;
+}
+.top_left_p1 .left{
+  float: left;
+}
+.top_left_p1 .right{
+  float: right; 
+}
+.top_left_p1 div span{
+  color:#b8bac9;
+  width: 100px;
+  display: block;
+  float: left;
+}
+.top_left_p1 .left div select  , 
+.top_left_p1 .right div select ,
+#sensorSelect {
+  width: 298px;
+  height: 40px;
+  color: #f7f8f9;
+  border: 1px solid #f7f8f9;
+  background-color: #001d6b;
+  margin-bottom: 12px;
+  padding: 0 1%;
+  outline:0 none !important; 
+}
+.btn_search,.btn_start,.btn_stop{
+  width: 110px;
+  height: 40px;
+  border: 1px solid #eed34e;
+  background-color: #eed34e;
+  outline:0 none !important; 
+  color: #010e44;
+  font-size: 16px;
+  margin-top: 52px;
+}
+.btn_search:hover ,.btn_start:hover,.btn_stop:hover{
+    background: #59baf2;
+    color: white;
+    border: 1px solid #59baf2;
+  }
+.top_right_p1{
+  border: 1px solid #00b4ff;
+  float: right;
+}
+.top_right_p1 .blue_border{
+  text-align: left;
+  line-height: 23px;
+  width: 96%;  
+  margin-left:10%;
+}
+
+
+.dateSearch{
+	text-align:center;
+	padding-top:50px;
+	padding-bottom:40px;
+}

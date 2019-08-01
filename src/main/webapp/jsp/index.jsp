@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<div class="page-wrapper">
-		<div class="page-header navbar navbar-fixed-top" style="background-color: #ffffff">
+		<div class="page-header navbar navbar-fixed-top" style="background-color:#021352;">
 			<!-- BEGIN HEADER INNER -->
 			<div class="page-header-inner ">
 				<!-- BEGIN LOGO -->
@@ -86,7 +86,16 @@
 					<!--提示栏开始 -->
 					<ul class="nav navbar-nav pull-right">
 
-
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/HomePage/Index' class="dropdown-toggle">
+										<i class="iconfont icon-shujuchaxun"></i>
+									</a>
+								</li>
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/index' class="dropdown-toggle">
+										<i class="iconfont icon-yujing"></i>
+									</a>
+								</li>
 								<li class="dropdown dropdown-quick-sidebar-toggler">
 									<a href='${pageContext.request.contextPath}/exit' class="dropdown-toggle">
 										<i class="iconfont icon-chain-broken"></i>
@@ -105,7 +114,7 @@
 		<div class="clearfix"></div>
 	
 		<div class="page-container">
-			<div class="page-sidebar-wrapper">
+			<div class="page-sidebar-wrapper" >
 			
 				<div class="page-sidebar navbar-collapse collapse" id="_menu">
 					<ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 40px">
@@ -130,41 +139,46 @@
 							</ul>
 						</li> --%>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
 								<span class="title">传感器综合查询</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
 								<li class="nav-item-1">
-									<a href='${pageContext.request.contextPath}/sensor/_list' target="mainFrame" class="nav-link">
+									<a href='${pageContext.request.contextPath}/angle/_list' target="mainFrame" class="nav-link">
 										<span class="title">传感器综合管理</span>
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef;  border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
-								<span class="title">传感器倾斜角</span><span class="selected"></span><span class="arrow open"></span>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352;  border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+								<span class="title">传感器角度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
 								<li class="nav-item-1">
 									<a href='${pageContext.request.contextPath}/angle/_list' target="mainFrame" class="nav-link">
-										<span class="title">倾斜角信息管理</span>
+										<span class="title">角度信息管理</span>
 									</a>
 								</li>
 								<li class="nav-item-1">
+
+									<a href='${pageContext.request.contextPath}/Warning/Warninglist' target="mainFrame" class="nav-link">
+										<span class="title">预警管理</span>
+
 									<a href='${pageContext.request.contextPath}/angle/countManage' target="mainFrame" class="nav-link">
-										<span class="title">倾斜角统计管理</span>
+										<span class="title">角度统计管理</span>
 									</a>
 								</li>
 								<li class="nav-item-1">
 									<a href='${pageContext.request.contextPath}/angle/_accelationlist' target="mainFrame" class="nav-link">
-										<span class="title">倾斜角预警管理</span>
+										<span class="title">角度预警管理</span>
+
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
 								<span class="title">传感器加速度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -186,29 +200,29 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
-								<span class="title">传感器风压</span><span class="selected"></span><span class="arrow open"></span>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+								<span class="title">传感器电阻应变</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
 								<li class="nav-item-1">
 									<a href='${pageContext.request.contextPath}/strain/_list' target="mainFrame" class="nav-link">
-										<span class="title">风压信息管理</span>
+										<span class="title">电阻应变信息管理</span>
 									</a>
 								</li>
 								<li class="nav-item-1">
 									<a href='${pageContext.request.contextPath}/strain/countManage' target="mainFrame" class="nav-link">
-										<span class="title">风压统计管理</span>
+										<span class="title">电阻应变统计管理</span>
 									</a>
 								</li>
 								<li class="nav-item-1">
 									<a href='${pageContext.request.contextPath}/strain/_accelationlist' target="mainFrame" class="nav-link">
-										<span class="title">压力预警管理</span>
+										<span class="title">电阻应变预警管理</span>
 									</a>
 								</li>
 							</ul>
 						</li>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
 								<span class="title">传感器陀螺仪</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -230,7 +244,7 @@
 							</ul>
 						</li>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
 								<span class="title">传感器温度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -251,9 +265,32 @@
 								</li>
 							</ul>
 						</li>
+						<li class="nav-item">
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+								<span class="title">传感器湿度</span><span class="selected"></span><span class="arrow open"></span>
+							</a>
+							<ul class="sub-menu">
+								<li class="nav-item-1">
+									<a href='${pageContext.request.contextPath}/humidity/_list' target="mainFrame" class="nav-link">
+										<span class="title">湿度信息管理</span>
+									</a>
+								</li>
+								<li class="nav-item-1">
+									<a href='${pageContext.request.contextPath}/humidity/countManage' target="mainFrame" class="nav-link">
+										<span class="title">湿度统计管理</span>
+									</a>
+								</li>
+								<li class="nav-item-1">
+									<a href='${pageContext.request.contextPath}/humidity/_accelationlist' target="mainFrame" class="nav-link">
+										<span class="title">湿度预警管理</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					
 
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
 								<span class="title">系统管理</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -276,7 +313,7 @@
 			<div class="page-content-wrapper">
 				<!-- BEGIN CONTENT BODY -->
 				<div class="page-content">
-					<iframe id="mainFrame" name="mainFrame" scrolling="no" src="${pageContext.request.contextPath}/user/_list" frameborder="0" style="padding: 0px; width: 100%; "></iframe>
+					<iframe id="mainFrame" name="mainFrame" scrolling="no" src="${pageContext.request.contextPath}/HomePage/EarlyWarningStatistics" frameborder="0" style="padding: 0px; width: 100%; "></iframe>
 				</div>
 	
 			</div>

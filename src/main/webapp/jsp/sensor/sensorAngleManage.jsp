@@ -52,10 +52,7 @@
 
 		<div class="clearfix"></div>
 <%-- 		<c:if test="${fn:contains(buttonSession,'work_hr_new')==true}"> --%>
-			<button class="but_add" type="button"
-				onclick="javascript:_editHrInfo();">
-				<i class="iconfont icon-xinzeng"></i>新增
-			</button>
+	
 <%-- 		</c:if>
 
 		<c:if test="${fn:contains(buttonSession,'work_hr_query')==true}"> --%>
@@ -72,7 +69,9 @@
 					<tr>
 						<th width="5%">序号</th>
 						<th>传感器名称</th>
-						<th>值</th>
+						<th>值一</th>
+						<th>值二</th>
+						<th>值三</th>
 						<th>创建时间</th>						
 					</tr>
 					<c:if test="${not empty pageBean.items }">
@@ -80,7 +79,9 @@
 							<tr>
 								<td align="center">${status.index+1}</td>
 								<td align="center">${item.sensorName }</td>
-								<td align="center">${item.value }</td>
+								<td align="center">${item.valueone }</td>
+								<td align="center">${item.valuetwo }</td>
+								<td align="center">${item.valuethree }</td>
 								<td align="center">${item.createTime }</td>								
 							</tr>
 						</c:forEach>

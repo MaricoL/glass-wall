@@ -47,15 +47,10 @@
 			<span>传感器风压统计管理</span>
 		</div>
 
-		<span class="state_title">传感器名称：</span> <input class="state_input"
-			name="sensorName" value="${conditionEntity.sensorName }" id="sensorName" /> 
+		<span class="state_title">传感器名称：</span> <input class="state_input" name="name" value="${name }" id="name" /> 
 
 		<div class="clearfix"></div>
 <%-- 		<c:if test="${fn:contains(buttonSession,'work_hr_new')==true}"> --%>
-			<button class="but_add" type="button"
-				onclick="javascript:_editHrInfo();">
-				<i class="iconfont icon-xinzeng"></i>新增
-			</button>
 <%-- 		</c:if>
 
 		<c:if test="${fn:contains(buttonSession,'work_hr_query')==true}"> --%>
@@ -86,27 +81,28 @@
 						<th>12月</th>
 					
 					</tr>
-					<c:if test="${not empty list }">
-						<c:forEach items="${list}" var="item" varStatus="status">
+					<c:if test="${not empty pageBean.items }">
+						<c:forEach items="${pageBean.items}" var="item" varStatus="status">
 							<tr>
 								<td align="center">${status.index+1}</td>
 								<td align="center">${item.name}</td>
-								<td align="center">${item.January}</td>
-								<td align="center">${item.February}</td>
-								<td align="center">${item.March}</td>
-								<td align="center">${item.April}</td>
-								<td align="center">${item.May}</td>
-								<td align="center">${item.June}</td>
-								<td align="center">${item.July}</td>
-								<td align="center">${item.August}</td>
-								<td align="center">${item.September}</td>
-								<td align="center">${item.October}</td>
-								<td align="center">${item.November}</td>
-								<td align="center">${item.December}</td>
+								<td align="center">${item.january}</td>
+								<td align="center">${item.february}</td>
+								<td align="center">${item.march}</td>
+								<td align="center">${item.april}</td>
+								<td align="center">${item.may}</td>
+								<td align="center">${item.june}</td>
+								<td align="center">${item.july}</td>
+								<td align="center">${item.august}</td>
+								<td align="center">${item.september}</td>
+								<td align="center">${item.october}</td>
+								<td align="center">${item.november}</td>
+								<td align="center">${item.december}</td>
 							</tr>
 						</c:forEach>
 					</c:if>
 					<c:if test="${empty pageBean.items }">
+					
 						<tr>
 							<td colspan="14" style="text-align: center;">查询无记录</td>
 						</tr>

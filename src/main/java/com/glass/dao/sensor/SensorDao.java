@@ -8,4 +8,6 @@ public interface SensorDao {
 
 	List<Sensor> getSensorList(Sensor sensor);
 
+	List<Sensor> syncSensorData();
+
 }

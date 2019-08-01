@@ -131,7 +131,7 @@
 							data:{account:$("#userName").val(),password:$("#password").val()},
 							success:function(data){
 								if(data == 'success'){
-									location.href = '${pageContext.request.contextPath}/workbench';
+									location.href = '${pageContext.request.contextPath}/HomePage/Index';
 								}else{
 									alert("账号或密码错误");
 								}

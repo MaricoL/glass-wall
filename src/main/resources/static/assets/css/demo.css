@@ -35,7 +35,7 @@ body {
   margin-top: 10px;
   margin-bottom: 20px;
   box-shadow: 10px 10px 10px 0px rgba(10, 13, 47, 0.15);
-  border-top: 50px solid #447aef;
+  border-top: 50px solid #021352;
   border-radius: 5px; 
   }
   
@@ -63,12 +63,12 @@ body {
           width: 70px;
           height: 28px;
           border-radius: 14px;
-          border: 1px solid #EA0000;
+          border: 1px solid #447aef;
           line-height: 28px;
           text-align: center;
           margin: 5px auto; }
         .table_container table tbody tr td .table_button:hover {
-          background: #EA0000;
+          background: #447aef;
           color: #fff; }
         .table_container table tbody tr td .cancel {
           color: #828388; }
@@ -101,7 +101,7 @@ body {
   font-size: 16px; }
 
 .but_search {
-  background: #fe7501;
+  background: #447aef;
   width: 118px;
   height: 34px;
   border-radius: 17px;
@@ -115,7 +115,7 @@ body {
     margin-right: 6px; }
 
 .but_add {
-  background: #EA0000;
+  background: #447aef;
   width: 118px;
   height: 34px;
   border-radius: 17px;
@@ -205,7 +205,7 @@ body {
   margin-top: 10px;
   margin-bottom: 20px;
   box-shadow: 10px 10px 10px 0px rgba(10, 13, 47, 0.15);
-  border-top: 50px solid #EA0000;
+  border-top: 50px solid #447aef;
   border-radius: 5px;
   padding-bottom: 20px; }
 
@@ -223,7 +223,7 @@ body {
   width: 8px;
   height: 40px;
   border-radius: 4px;
-  background: #447aef;
+  background: #021352;
   position: absolute;
   top: 24px;
   left: 1%; }
@@ -245,7 +245,7 @@ body {
     border: 1px solid #276faa;
     margin: 32px 8% 0 8%; }
   .popup_button_container .main_button {
-    background: #EA0000;
+    background: #447aef;
     border: 1px solid #946b2d;
     margin: 32px 8% 0 8%; }
   .popup_button_container .gray_button {
