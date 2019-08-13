@@ -12,4 +12,6 @@ public interface AngleDao {
 	List<Object> getAngleCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Angle> syncAngleData(HashMap<String, Object> paramMap);
+
+	List<Angle> getAllItems();
 }

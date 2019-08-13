@@ -14,6 +14,8 @@ public interface IAccelationService {
 
 	List<Accelation> syncAccelationData(HashMap<String, Object> paramMap);
 
+	List<Accelation> getAllItems();
+
 	/*
 	 * List<Object> getAccrelationCountManage(Accelation entity, Integer
 	 * currentPage, Integer pageSize);

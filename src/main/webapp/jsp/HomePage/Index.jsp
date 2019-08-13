@@ -11,9 +11,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>首页</title>
+	  <link href="${pageContext.request.contextPath}/font/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/HomeAssets/css/gif.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/HomeAssets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/HomeAssets/css/Leftstyle.css" rel="stylesheet" type="text/css" />
+  
+    
 
 
 <style>
@@ -65,77 +68,190 @@
     /* padding-left: 20px; */
     padding-right: 10px;
 }
-
+.main .leftPart .top h2 {
+    font-size: 24px;
+    color: #59baf2;
+    font-weight: normal;
+    padding: 15px 25px 15px 55px;
+    border: 3px solid #1f57c3;
+    display: inline-block;
+    border-left: 0;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    position: relative;
+    top: -864px;
+}
 </style>
 
+    <style>
 
+ .wrapper-toggle {
+    height: 100vh;
+    width: 100vw;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    background: #ECF0F1;
+}
+.toggle {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    background-color: #263666;
+    overflow: hidden;
+    margin: 10px;
+    margin-left:-200px;
+    margin-top:0px;
+   
+}
+.toggle__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    z-index: 2;
+}
+.toggle__label {
+    display: inline-block;
+    width: 75px;
+    height: 40px;
+    background-color: #6ab3e5;
+    color: #FFF;
+    font-size: 1.8em;
+    font-weight: 300;
+    text-align: center;
+    line-height: 40px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.toggle__label:before {
+    content: attr(data-off);
+}
+.toggle input:checked + label {
+    margin-left: 75px;
+    background: #6ab3e5;
+    color: white;
+}
+.toggle input:checked + label:before {
+    content: attr(data-on);
+}
+.toggle--on-off label.toggle__label {
+    background-color: #f47e71;
+}
+.toggle--yes-no label.toggle__label {
+    background-color: #EF4836;
+}
+.toggle--yes-no input:checked + label {
+    background: #F5AB35;
+}
+    </style> 
 	  
 </head>
 <body>
 
 
-<ul id="navigation" style="
-    padding-top: 175px;
+<%-- <ul id="navigation" style="
+    padding-top: 230px;
 ">
-	<li class="home"><a href="${pageContext.request.contextPath}/index" title="工作台"></a></li>
 	<li class="about"><a href="${pageContext.request.contextPath}/HomePage/SensorStatistics" title="传感器"></a></li>
+	<li class="home"><a href="${pageContext.request.contextPath}/index" title="工作台"></a></li>
 	<li class="search"><a href="${pageContext.request.contextPath}" title="退出"></a></li>
 <!-- 	<li class="photos"><a href="http://www.bingdou.net/" title="Photos"></a></li> -->
 <!-- 	<li class="rssfeed"><a href="http://www.bingdou.net/" title="Rss Feed"></a></li> -->
 <!-- 	<li class="podcasts"><a href="http://www.bingdou.net/" title="Podcasts"></a></li> -->
 <!-- 	<li class="contact"><a href="http://www.bingdou.net/" title="Contact"></a></li> -->
-</ul>
+</ul> --%>
 
 
 <div class="container containerBg">
 
+			<div class="top-menu">
+					<!--提示栏开始 -->
+					<ul class="nav navbar-nav pull-right">
 
+							<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/HomePage/Index' class="dropdown-toggle">
+										
+										<img src="${pageContext.request.contextPath}/img/home.png">
+									</a>
+								</li> 
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/HomePage/SensorStatistics' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-rizhi"></i> -->
+										<img src="${pageContext.request.contextPath}/img/chuanganqi.png">
+									</a>
+								</li>
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/index' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-yujing"></i> -->
+										<img src="${pageContext.request.contextPath}/img/gongzuotai.png">
+									</a>
+								</li>
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/exit' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-chain-broken"></i> -->
+										<img src="${pageContext.request.contextPath}/img/dianyuan.png">
+									</a>
+								</li>
+
+							</ul>
+					<!-- 提示栏结束 -->
+				</div>
 		<div class="main clearfix">
 			<div class="leftPart">
 				<div class="top">
 					<h2>武康大楼</h2>
-      
                   <a class="menu i i_btn" no=text href="${pageContext.request.contextPath}/index" title="工作台">
-			<i class="iconfont icon-gongzuotai"></i>
-		</a>
+					<i class="iconfont icon-gongzuotai"></i>
+				</a>
+				
 	
+	<iframe id="ThreeId_2D" name="ThreeId_2D" scrolling="no" src="${pageContext.request.contextPath}/Three/ThreeTwo"  frameborder="0"   style="width: 946px;height:700px;    padding-left: 60px; "></iframe>
+	
+	
+	<iframe id="ThreeId_3D" name="ThreeId_3D" scrolling="no" src="${pageContext.request.contextPath}/Three/ShowModel" frameborder="0" style="width: 940px;height:900px;    padding-left: 60px; "></iframe>
+				
+					<div>	
+					</div>
 					<div class="building">
-						<img class="imgLight" src="${pageContext.request.contextPath}/HomeAssets/images/building/light.png" alt="">
-						<img class="imgBuilding imgBuildingBorder" src="${pageContext.request.contextPath}/HomeAssets/images/building/buildingBorder.png" alt="">
-						<img class="imgBuilding" src="${pageContext.request.contextPath}/HomeAssets/images/building/building.png" alt="">
-				
-			
-				
 					</div>
-					<div class="tooltipBox">
-						<ul>
-							<li><span>风压</span> <strong class="data_yellow"></strong></li>
-							<li><span>振动</span> <strong class="data_yellow"></strong></li>
-							<li><span>倾斜角</span> <strong class="data_yellow"></strong></li>
-							<li><span>应力</span> <strong class="data_yellow"></strong></li>
-							<li><span>温度</span> <strong class="data_yellow"></strong></li>
-							<li><span>应变</span> <strong class="data_yellow"></strong></li>
-							<li><span>湿度</span> <strong class="data_yellow"></strong></li>
-						</ul>
-					</div>
-					<div class="buildingSpot">
-						<ul>
-							<li>1</li>
-							<li>2</li>
-							<li>3</li>							
-						</ul>
-						<ul>					
-							<li>4</li>
-							<li>5</li>
-							<li>6</li>							
-						</ul>
-						<ul>
-							<li>7</li>
-							<li>8</li>
-							<li>9</li>
-						</ul>
-					</div>
+
 				</div>
+				
+					<div class="digital_monitor">
+      					<div class="dm_title">数字监测</div>
+      					<div class="dm_title_en">DIGITAL MONITOR</div>
+      					<div class="dm_content ">应力 - <span class="normal">正常</span></div>
+      					<div class="dm_content">应变 - <span class="normal">正常</span></div>
+      					<div class="dm_content">倾角 - <span class="normal">正常</span></div>
+      					<div class="dm_content">振动 - <span class="normal">正常</span></div>
+      					<div class="dm_content">温度 - <span class="normal">正常</span></div>
+      					<div class="dm_content">湿度 - <span class="normal">正常</span></div>
+      					<div class="dm_content">风压 - <span class="error">异常</span></div>
+      				</div>
+				
 				<div class="bottom">
 					<div class="block">
 						<h2>倾斜角<span class="todetail">>></span></h2>
@@ -166,7 +282,11 @@
 				</div>
 			</div>
 			
-	
+	<div> <div class="toggle toggle--fixed-variable" >
+        <input type="checkbox" class="toggle__input"  style="z-index:10"/>
+        <label data-on="2D" data-off="3D" class="toggle__label" style="z-index:8"></label>
+        <span id="span_3d" style="position:absolute;top:8px;left:20px;color:#999;font-size:20px;z-index:0;display:none">3D</span><span id="span_2d" style="position:absolute;top:8px;right:20px;color:#999;font-size:20px;z-index:0">2D</span>
+    </div></div>
 	</div>
 	
 	
@@ -179,6 +299,37 @@
 	<script type="text/javascript">
 
 		$(function() {
+
+			
+	     	$("#ThreeId_2D").hide();
+ // 			3D/2D切换
+			   $(".toggle__input").click(function () {
+	              //  debugger;
+	                var data = $(this);
+
+                if(data[0].checked==true){
+                    $("h2").css("top","-668px");
+
+                	//	alert("2D");
+                	$("#ThreeId_3D").hide();
+                	$("#ThreeId_2D").show();
+                	$("#span_2d").css("display","none");
+                	$("#span_3d").css("display","inline-block");
+                	
+                }else{
+                    $("h2").css("top","-864px");
+               
+                    //	alert("3D");
+                	$("#ThreeId_3D").show();
+                   	$("#ThreeId_2D").hide();
+                   	$("#span_3d").css("display","none");
+                   	$("#span_2d").css("display","inline-block");
+                }
+                
+	               
+	            });
+
+			
 			
 			$('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
 
@@ -975,6 +1126,17 @@
 			myChart.setOption(option)
 		}
 	
+		
+		
 	</script>
+	
+	<!-- 图片弹出窗 -->
+	<div id="outerdiv"
+		style="position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); z-index: 2; width: 100%; height: 100%; display: none;">
+		<div id="innerdiv" style="position: absolute;">
+			<img id="bigimg" style="border: 5px solid #fff;" src="" />
+		</div>
+	</div>
+	
 </body>
 </html>

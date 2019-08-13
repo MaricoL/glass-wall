@@ -7,7 +7,8 @@
 	    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
 		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR" />
 		<result column="value" property="value" jdbcType="VARCHAR" />
-		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR"/>		
 		<!-- <result column="agreement" property="agreement"
 			jdbcType="VARCHAR" /> -->
 	</resultMap>
@@ -44,7 +45,9 @@
 		GROUP BY sensor_name
 	</select>
 
-	
+	<select id="exportHumidityList" resultMap="sensor_humidity" parameterType="com.glass.entity.sensor.Humidity">
+		select h.sensor_name,description,h.`value`,h.create_time from sensor_humidity as h inner join sensor_base as b on h.sensor_name = b.num order by h.sensor_name asc, cast(h.create_time as datetime) desc
+	</select>
 	
 	
 </mapper>

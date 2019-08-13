@@ -12,5 +12,6 @@ public class Angle {
 	private String valuetwo;// 值
 	private String valuethree;// 值
 	private String createTime;// 生成时间
+	private String description;
 
 }

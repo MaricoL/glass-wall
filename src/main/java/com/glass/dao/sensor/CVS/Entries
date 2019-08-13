@@ -1,7 +1,9 @@
-/AccelationDao.java/1.5/Thu Aug  1 05:39:41 2019//
-/AngleDao.java/1.5/Thu Aug  1 05:48:50 2019//
-/GyroDao.java/1.5/Thu Aug  1 05:51:00 2019//
-/HumidityDao.java/1.1/Tue Jul 30 09:53:20 2019//
+/AccelationDao.java/1.6/Mon Aug 12 03:08:49 2019//
+/AngleDao.java/1.6/Mon Aug 12 01:42:20 2019//
+/BreakdownDao.java/1.1/Fri Aug  2 09:34:19 2019//
+/GyroDao.java/1.6/Mon Aug 12 05:08:18 2019//
+/HumidityDao.java/1.2/Mon Aug 12 05:28:01 2019//
+/SensorBaseDao.java/1.1/Thu Aug  1 09:28:02 2019//
 /SensorDao.java/1.4/Wed Jul 31 02:42:02 2019//
-/StrainDao.java/1.5/Thu Aug  1 04:51:05 2019//
-/TempertureDao.java/1.5/Thu Aug  1 05:31:51 2019//
+/StrainDao.java/1.6/Mon Aug 12 03:20:28 2019//
+/TempertureDao.java/1.6/Mon Aug 12 05:28:01 2019//

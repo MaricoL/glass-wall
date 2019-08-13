@@ -100,4 +100,9 @@ public class StrainService implements IStrainService {
 
 	}
 
+	@Override
+	public List<Strain> getAllItems() {
+		return strainDao.getAllItems();
+	}
+
 }

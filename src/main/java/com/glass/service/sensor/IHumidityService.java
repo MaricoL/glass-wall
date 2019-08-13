@@ -11,4 +11,6 @@ public interface IHumidityService {
 	PageBean<Humidity> getSensorHumidityist(Humidity entity, Integer currentPage,Integer pageSize);
 
 	PageBean<StatisticalManagement> getHumidityCountManage(String name, Integer currentPage, Integer pageSize);
+	
+	List<Humidity> exportHumidityList();
 }

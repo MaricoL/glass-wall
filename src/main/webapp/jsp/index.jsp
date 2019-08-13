@@ -30,7 +30,6 @@
 	<link href="css/window.css" rel="stylesheet" />
 	<script src="js/window.js"></script>
 	<style type="text/css">
-	
 	a {
     color: #ffffff;
     text-decoration: none;
@@ -56,11 +55,20 @@
     background: #447aef
 }
 
+.page-sidebar .page-sidebar-menu .sub-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a {
+    color: #fff;
+    background: #010435;
+
+}
+.page-sidebar .page-sidebar-menu .sub-menu>li>a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a:hover {
+    color: #fff;
+    background: #010435;
+}
 	</style>
 	
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-closed page-sidebar-menu-closed">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-closed page-sidebar-menu-closed" style="overflow-y:hidden;">
 	<div id="tanchuceng">
 		<div class="mask">
 			<div class="tanc">
@@ -69,18 +77,18 @@
 		</div>
 	</div>
 	<div class="page-wrapper">
-		<div class="page-header navbar navbar-fixed-top" style="background-color:#021352;">
+		<div class="page-header navbar navbar-fixed-top">
 			<!-- BEGIN HEADER INNER -->
 			<div class="page-header-inner ">
 				<!-- BEGIN LOGO -->
-				<div class="page-logo">
+			<div class="page-logo" style="background-color:#010435;">
 					<%-- <a href="javascript:;">
 						<img src="<c:url value="img/gslogo1-01.png"/>" alt="logo" class="logo-default" style="width: 44px;height: 44px;margin: 5px 2px 2px 2px;" />
 						<img src="<c:url value="img/gs-big-01.png"/>" alt="logo" class="logo-default1" style="height: 44px; display: none;" /></a> --%>
 					<div class="menu-toggler sidebar-toggler">
 						<span></span>
 					</div>
-				</div>
+				</div> 
 
 				<div class="top-menu">
 					<!--提示栏开始 -->
@@ -88,17 +96,26 @@
 
 								<li class="dropdown dropdown-quick-sidebar-toggler">
 									<a href='${pageContext.request.contextPath}/HomePage/Index' class="dropdown-toggle">
-										<i class="iconfont icon-shujuchaxun"></i>
+										<!-- <i class="iconfont icon-shujuchaxun"></i> -->
+										<img src="img/home.png">
 									</a>
 								</li>
 								<li class="dropdown dropdown-quick-sidebar-toggler">
-									<a href='${pageContext.request.contextPath}/index' class="dropdown-toggle">
-										<i class="iconfont icon-yujing"></i>
+									<a href='${pageContext.request.contextPath}/HomePage/SensorStatistics' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-rizhi"></i> -->
+										<img src="img/chuanganqi.png">
 									</a>
 								</li>
+								 <li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/index' class="dropdown-toggle">
+										
+										<img src="img/gongzuotai.png">
+									</a>
+								</li> 
 								<li class="dropdown dropdown-quick-sidebar-toggler">
 									<a href='${pageContext.request.contextPath}/exit' class="dropdown-toggle">
-										<i class="iconfont icon-chain-broken"></i>
+										<!-- <i class="iconfont icon-chain-broken"></i> -->
+										<img src="img/dianyuan.png">
 									</a>
 								</li>
 
@@ -113,16 +130,16 @@
 
 		<div class="clearfix"></div>
 	
-		<div class="page-container">
+		<div class="page-container" style="background-color:#010435;">
 			<div class="page-sidebar-wrapper" >
 			
 				<div class="page-sidebar navbar-collapse collapse" id="_menu">
 					<ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 40px">
-						<li class="sidebar-toggler-wrapper hide">
+						<li class="sidebar-toggler-wrapper">
 							<div class="sidebar-toggler"><span></span></div>
 						</li>
-					<%-- 	<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #447aef"><i class="fa icon-guest"></i>
+						<%-- <li class="nav-item">
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435"><i class="fa icon-guest"></i>
 								<span class="title">企业人事信息</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -137,21 +154,23 @@
 									</a>
 								</li>
 							</ul>
-						</li> --%>
+						</li>  --%>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/sensor.png">
 								<span class="title">传感器综合查询</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
 								<li class="nav-item-1">
-									<a href='${pageContext.request.contextPath}/angle/_list' target="mainFrame" class="nav-link">
+									<a href='${pageContext.request.contextPath}/angle/_list' target="mainFrame" class="nav-link" >
 										<span class="title">传感器综合管理</span>
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352;  border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435;  border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/angle.png">
 								<span class="title">传感器角度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -162,8 +181,8 @@
 								</li>
 								<li class="nav-item-1">
 
-									<a href='${pageContext.request.contextPath}/Warning/Warninglist' target="mainFrame" class="nav-link">
-										<span class="title">预警管理</span>
+<%-- 									<a href='${pageContext.request.contextPath}/Warning/Warninglist' target="mainFrame" class="nav-link"> --%>
+<!-- 										<span class="title">预警管理</span> -->
 
 									<a href='${pageContext.request.contextPath}/angle/countManage' target="mainFrame" class="nav-link">
 										<span class="title">角度统计管理</span>
@@ -178,7 +197,8 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/speed.png">
 								<span class="title">传感器加速度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -200,7 +220,8 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/resistance.png">
 								<span class="title">传感器电阻应变</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -222,7 +243,8 @@
 							</ul>
 						</li>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/gyroscope.png">
 								<span class="title">传感器陀螺仪</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -244,7 +266,8 @@
 							</ul>
 						</li>
 							<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/temperature.png">
 								<span class="title">传感器温度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -266,7 +289,8 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/humidity.png">
 								<span class="title">传感器湿度</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -287,10 +311,24 @@
 								</li>
 							</ul>
 						</li>
+						<li class="nav-item">
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/errorinfo.png">
+								<span class="title">异常信息</span><span class="selected"></span><span class="arrow open"></span>
+							</a>
+							<ul class="sub-menu">
+								<li class="nav-item-1">
+									<a href='${pageContext.request.contextPath}/breakdown/_list' target="mainFrame" class="nav-link">
+										<span class="title">异常信息管理</span>
+									</a>
+								</li>								
+							</ul>
+						</li>
 					
 
 						<li class="nav-item">
-							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #021352; border-top: 1px solid #F0F5F7;    border-bottom: 1px solid #F0f5F7;"><i class="fa icon-yujing"></i>
+							<a href="javascript:;" class="nav-link nav-toggle"  style="background: #010435; border-top: 1px solid  #010435;    border-bottom: 1px solid  #010435;">
+							<img class="fa" src="img/systemmanage.png">
 								<span class="title">系统管理</span><span class="selected"></span><span class="arrow open"></span>
 							</a>
 							<ul class="sub-menu">
@@ -312,19 +350,19 @@
 			<!-- BEGIN CONTENT -->
 			<div class="page-content-wrapper">
 				<!-- BEGIN CONTENT BODY -->
-				<div class="page-content">
-					<iframe id="mainFrame" name="mainFrame" scrolling="no" src="${pageContext.request.contextPath}/HomePage/EarlyWarningStatistics" frameborder="0" style="padding: 0px; width: 100%; "></iframe>
+				<div class="page-content" style="height:1080px" >
+				<iframe id="mainFrame" name="mainFrame" scrolling="no" src="${pageContext.request.contextPath}/HomePage/EarlyWarningStatistics" frameborder="0" style="padding: 0px; width: 100%;height:1080px; "></iframe>
 				</div>
 	
 			</div>
 			
-			<div class="page-footer">
-				<div class="page-footer-inner"> 2019 &copy; 
+			<div class="page-footer" style="display:none">
+				<!-- <div class="page-footer-inner"> 2019 &copy; 
 					<a href="http://www.softline.sh.cn" title="softline" target="_blank">技术支持：上海软中信息技术有限公司</a>
 				</div>
 				<div class="scroll-to-top">
 					<i class="fa icon-arrow-up"></i>
-				</div>
+				</div> -->
 			</div>
 			
 

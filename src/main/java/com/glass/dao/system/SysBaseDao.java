@@ -27,4 +27,6 @@ public interface SysBaseDao {
 	 SysBase getbaseById(Integer id);
 	 void delbaseById(Integer id);
 
+	List<SysBase> getByType(int i);
+
 }

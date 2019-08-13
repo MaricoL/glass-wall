@@ -15,4 +15,6 @@ public interface IStrainService {
 
 	List<Strain> syncStrainData(HashMap<String, Object> paramMap);
 
+	List<Strain> getAllItems();
+
 }

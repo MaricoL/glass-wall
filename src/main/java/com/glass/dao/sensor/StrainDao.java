@@ -12,4 +12,6 @@ public interface StrainDao {
 	List<Object> getStrainCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Strain> syncStrainData(HashMap<String, Object> paramMap);
+
+	List<Strain> getAllItems();
 }

@@ -10,6 +10,7 @@
 		<result column="y_value" property="yvalue" jdbcType="VARCHAR" />
 		<result column="z_value" property="zvalue" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
+		<result column="description" property="description" jdbcType="VARCHAR" />		
 		<!-- <result column="agreement" property="agreement"
 			jdbcType="VARCHAR" /> -->
 	</resultMap>
@@ -66,6 +67,13 @@
 		<if test="endTime == 'null'">
 				limit 1
 		</if>
+	</select>
+	
+	<select id="getAllItems" resultType="com.glass.entity.sensor.Gyro">
+		select g.sensor_name , b.description , g.x_value , g.y_value , g.z_value, g.create_time from  sensor_gyro g 
+		inner join sensor_base b on g.sensor_name = b.num 
+		order by g.sensor_name asc, cast(g.create_time as datetime) desc
+
 	</select>
 
 	

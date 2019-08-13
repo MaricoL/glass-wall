@@ -11,4 +11,6 @@ public interface AccelationDao {
 	List<Object> getAccrelationCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Accelation> syncAccelationData(HashMap<String, Object> paramMap);
+
+	List<Accelation> getAllItems();
 }

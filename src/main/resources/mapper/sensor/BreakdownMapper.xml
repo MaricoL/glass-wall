@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glass.dao.sensor.BreakdownDao">
+	<resultMap id="sensor_breakdown" type="com.glass.entity.sensor.Breakdown">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR"/>
+		<result column="breakdown_name" property="breakdownName" jdbcType="VARCHAR"/>
+		<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+		<result column="person_name" property="personName" jdbcType="VARCHAR"/>
+		<result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+		<result column="is_done" property="isDone" jdbcType="INTEGER"/>
+		<result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="getBreakdownList" resultMap="sensor_breakdown" parameterType="com.glass.entity.sensor.Breakdown">
+		select * from sensor_breakdown as b
+		<where>
+			<if test="sensorName != null and sensorName != ''">
+				b.sensorName = #{sensorName}
+			</if>
+		</where>
+	</select>
+</mapper>

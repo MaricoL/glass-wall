@@ -1,7 +1,9 @@
-/AccelationService.java/1.7/Thu Aug  1 08:39:35 2019//
-/AngleService.java/1.5/Thu Aug  1 08:39:45 2019//
-/GyroService.java/1.5/Thu Aug  1 08:40:06 2019//
-/HumidityService.java/1.1/Tue Jul 30 09:53:20 2019//
+/AccelationService.java/1.8/Mon Aug 12 03:08:44 2019//
+/AngleService.java/1.7/Mon Aug 12 01:42:22 2019//
+/BreakdownService.java/1.1/Fri Aug  2 09:34:19 2019//
+/GyroService.java/1.6/Mon Aug 12 05:08:19 2019//
+/HumidityService.java/1.2/Mon Aug 12 05:28:01 2019//
+/SensorBaseService.java/1.1/Thu Aug  1 09:28:02 2019//
 /SensorService.java/1.6/Wed Jul 31 02:42:06 2019//
-/StrainService.java/1.5/Thu Aug  1 08:39:19 2019//
-/TempertureService.java/1.5/Thu Aug  1 08:38:59 2019//
+/StrainService.java/1.6/Mon Aug 12 03:20:25 2019//
+/TempertureService.java/1.6/Mon Aug 12 05:28:01 2019//

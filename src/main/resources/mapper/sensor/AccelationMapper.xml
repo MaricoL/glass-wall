@@ -10,7 +10,8 @@
 		<result column="y_value" property="yvalue" jdbcType="VARCHAR" />
 		<result column="z_value" property="zvalue" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
-		<!-- <result column="agreement" property="agreement"
+		<result column="description" property="description" jdbcType="VARCHAR" />		
+				<!-- <result column="agreement" property="agreement"
 			jdbcType="VARCHAR" /> -->
 	</resultMap>
 	<select id="getSensorAccelationList" resultMap="sensor_accelation" parameterType="com.glass.entity.sensor.Accelation">
@@ -66,6 +67,12 @@
 		<if test="endTime == 'null'">
 				limit 1
 		</if>
+	</select>
+	
+		<select id="getAllItems" resultType="com.glass.entity.sensor.Accelation">
+		select ac.sensor_name , b.description , ac.x_value , ac.y_value , ac.z_value, ac.create_time from  sensor_accelation ac 
+		inner join sensor_base b on ac.sensor_name = b.num 
+		order by ac.sensor_name asc , cast(ac.create_time as datetime) desc
 	</select>
 	
 	

@@ -28,7 +28,7 @@ public class AngleService implements IAngleService {
 	@Override
 	public PageBean<Angle> getAngleList(Angle entity, Integer currentPage, Integer pageSize) {
 		// 固定的加载项
-		Page<Accelation> page = PageHelper.startPage(currentPage, pageSize);
+		Page<Angle> page = PageHelper.startPage(currentPage, pageSize);
 		// 数据库查询数据
 		List<Angle> allSensorAngle = angleDao.getAngleList(entity);
 
@@ -102,6 +102,11 @@ public class AngleService implements IAngleService {
 		}
 
 		return angleList;
+	}
+
+	@Override
+	public List<Angle> getAllItems() {
+		return angleDao.getAllItems();
 	}
 
 }

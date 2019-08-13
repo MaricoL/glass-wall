@@ -19,4 +19,6 @@ public interface IBaseService {
 	void addSysBase(SysBase sysBase);
 	void updateSysbase(SysBase sysBase);
 	void delbaseById(Integer id);
+
+	List<SysBase> getByType(int i);
 }

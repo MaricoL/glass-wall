@@ -8,6 +8,7 @@
 		<result column="sensor_name" property="sensorName" jdbcType="VARCHAR" />
 		<result column="value" property="value" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
+		<result column="description" property="description" jdbcType="VARCHAR" />		
 		<!-- <result column="agreement" property="agreement"
 			jdbcType="VARCHAR" /> -->
 	</resultMap>
@@ -64,9 +65,15 @@
 		<if test="endTime == 'null'">
 				limit 1
 		</if>
-
-	
+		
+		</select>
+		
+	<select id="getAllItems" resultType="com.glass.entity.sensor.Strain">
+		select st.sensor_name , b.description , st.value, st.create_time from  sensor_strain st 
+		inner join sensor_base b on st.sensor_name = b.num 
+		order by st.sensor_name asc, cast(st.create_time as datetime) desc
 	</select>
+
 	
 	
 </mapper>

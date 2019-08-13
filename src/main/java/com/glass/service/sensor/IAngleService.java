@@ -14,4 +14,6 @@ public interface IAngleService {
 	PageBean<StatisticalManagement> getAngleCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Angle> syncAngleData(HashMap<String, Object> paramMap);
+
+	List<Angle> getAllItems();
 }

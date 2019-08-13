@@ -105,4 +105,9 @@ public class GyroService implements IGyroService {
 
 		return gyroList;
 	}
+
+	@Override
+	public List<Gyro> getAllItems() {
+		return gyroDao.getAllItems();
+	}
 }

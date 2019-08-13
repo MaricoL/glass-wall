@@ -29,7 +29,7 @@ public class HumidityService implements IHumidityService {
 	@Override
 	public PageBean<Humidity> getSensorHumidityist(Humidity entity, Integer currentPage, Integer pageSize) {
 		//固定的加载项
-		Page<Accelation> page = PageHelper.startPage(currentPage, pageSize);
+		Page<Humidity> page = PageHelper.startPage(currentPage, pageSize);
 		//数据库查询数据
 		List<Humidity> allSensorAngle = sensorDao.getSensorHumidityist(entity);
 		
@@ -78,6 +78,12 @@ public class HumidityService implements IHumidityService {
 		PageBean<StatisticalManagement> pageBean = new PageBean<>(page.getPageNum(),page.getPageSize(),page.getTotal());
     	pageBean.setItems(allSensorStatistica);
 		return pageBean;
+	}
+	
+	@Override
+	public List<Humidity> exportHumidityList(){
+		List<Humidity> res = sensorDao.exportHumidityList();
+		return res;
 	}
 
 

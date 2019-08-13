@@ -47,17 +47,28 @@
 			<span>传感器温度信息管理</span>
 		</div>
 
-		<span class="state_title">传感器名称：</span> <input class="state_input"
+		<%-- <span class="state_title">传感器名称：</span> <input class="state_input"
 			name="sensorName" value="${conditionEntity.sensorName }" id="sensorName" /> 
-
+ --%>
+ 		<span class="state_title">传感器名称：</span> 
+        <select id='sensorName' name="sensorName" class="state_select">
+		   <option value="">全部</option>
+			<c:forEach items="${nameList}" var="com" varStatus="status">
+				<option value="${com.num}"
+					<c:if test="${conditionEntity.sensorName== com.num}">selected</c:if>>${com.description}</option>
+			</c:forEach>
+		</select>
 		<div class="clearfix"></div>
 <%-- 		<c:if test="${fn:contains(buttonSession,'work_hr_new')==true}"> --%>
 <%-- 		</c:if>
 
 		<c:if test="${fn:contains(buttonSession,'work_hr_query')==true}"> --%>
+			<button class="but_search" type="button" onclick="_export();">
+				<i class="iconfont icon-chaxun"></i>导出
+			</button>
 			<button class="but_search" type="button" onclick="_query();">
 				<i class="iconfont icon-chaxun"></i>查询
-			</button>
+			</button>			
 <%-- 		</c:if> --%>
 		<div class="clearfix"></div>
 
@@ -68,7 +79,8 @@
 					<tr>
 						<th width="5%">序号</th>
 						<th>传感器名称</th>
-						<th>值</th>
+						<th>传感器位置</th>
+						<th>Temp</th>
 						<th>创建时间</th>						
 					</tr>
 					<c:if test="${not empty pageBean.items }">
@@ -76,6 +88,13 @@
 							<tr>
 								<td align="center">${status.index+1}</td>
 								<td align="center">${item.sensorName }</td>
+								<td align="center">
+									<c:forEach items="${nameList}" var="list" varStatus="status">
+										<c:if test="${item.sensorName == list.num}">
+											${list.description}
+										</c:if>
+									</c:forEach>
+								</td>
 								<td align="center">${item.value }</td>
 								<td align="center">${item.createTime }</td>								
 							</tr>
@@ -105,6 +124,15 @@
 			form.action = "${searchurl}";
 			form.method = "POST";
 			form.submit();
+		}
+		//导出
+		function _export(){
+			var url = "${pageContext.request.contextPath}/temperature/_export";
+			var form = document.forms[0];
+			form.action = url;
+			form.method = "POST";
+			form.submit();
+			
 		}
 		/* 删除人事信息 */
 		function _deleteHrInfo(id) {

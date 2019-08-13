@@ -10,6 +10,7 @@
 	    <result column="value_two" property="valuetwo" jdbcType="VARCHAR" />
 		<result column="value_three" property="valuethree" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />		
+		<result column="decription" property="decription" jdbcType="VARCHAR" />		
 	</resultMap>
 	<select id="getAngleList" resultMap="sensor_angle" parameterType="com.glass.entity.sensor.Angle">
 		select * from sensor_angle as t
@@ -65,6 +66,12 @@
 		<if test="endTime == 'null'">
 				limit 1
 		</if>
+	</select>
+	
+	<select id="getAllItems" resultType="com.glass.entity.sensor.Angle">
+		select an.* , b.description from sensor_angle an 
+		inner join sensor_base b on an.sensor_name = b.num 
+		order by an.sensor_name asc , cast(an.create_time as datetime) desc
 	</select>
 
 	

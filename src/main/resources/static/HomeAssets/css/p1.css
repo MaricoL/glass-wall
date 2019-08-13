@@ -32,8 +32,8 @@
   outline:0 none !important; 
 }
 .btn_search,.btn_start,.btn_stop{
-  width: 110px;
-  height: 40px;
+  width: 80px;
+  height: 28px;
   border: 1px solid #eed34e;
   background-color: #eed34e;
   outline:0 none !important; 
@@ -60,6 +60,6 @@
 
 .dateSearch{
 	text-align:center;
-	padding-top:50px;
-	padding-bottom:40px;
+	padding-top:30px;
+	padding-bottom:30px;
 }

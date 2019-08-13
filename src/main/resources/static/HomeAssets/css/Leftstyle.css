@@ -11,10 +11,9 @@ ul#navigation li a{
     margin-left:-2px;
     width:100px;
     height:70px;    
-    background-color:#CFCFCF;
     background-repeat:no-repeat;
     background-position:center center;
-    border:1px solid #AFAFAF;
+    border:2px solid #1f57c3;
     -moz-border-radius:0px 10px 10px 0px;
     -webkit-border-bottom-right-radius:10px;
     -webkit-border-top-right-radius:10px;

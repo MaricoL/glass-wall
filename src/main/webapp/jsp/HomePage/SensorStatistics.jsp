@@ -16,20 +16,52 @@
 
 </head>
 <body>
-<ul id="navigation" style="
+<%-- <ul id="navigation" style="
     padding-top: 175px;
 ">
-	<li class="home"><a href="${pageContext.request.contextPath}/index" title="Home"></a></li>
-	<li class="about"><a href="${pageContext.request.contextPath}/HomePage/SensorStatistics" title="About"></a></li>
-	<li class="search"><a href="${pageContext.request.contextPath}" title="Search"></a></li>
+	<li class="about"><a href="${pageContext.request.contextPath}/HomePage/SensorStatistics" title="传感器"></a></li>
+	<li class="home"><a href="${pageContext.request.contextPath}/index" title="工作台"></a></li>
+	<li class="search"><a href="${pageContext.request.contextPath}" title="退出"></a></li>
 <!-- 	<li class="photos"><a href="http://www.bingdou.net/" title="Photos"></a></li> -->
 <!-- 	<li class="rssfeed"><a href="http://www.bingdou.net/" title="Rss Feed"></a></li> -->
 <!-- 	<li class="podcasts"><a href="http://www.bingdou.net/" title="Podcasts"></a></li> -->
 <!-- 	<li class="contact"><a href="http://www.bingdou.net/" title="Contact"></a></li> -->
-</ul>
+</ul> --%>
 
 	<div class="container">
-		<div class="main clearfix p1_margin">
+	<div class="top-menu">
+					<!--提示栏开始 -->
+					<ul class="nav navbar-nav pull-right">
+
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/HomePage/Index' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-shujuchaxun"></i> -->
+										<img src="${pageContext.request.contextPath}/img/home.png">
+									</a>
+								</li> 
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/HomePage/SensorStatistics' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-rizhi"></i> -->
+										<img src="${pageContext.request.contextPath}/img/chuanganqi.png">
+									</a>
+								</li> 
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/index' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-yujing"></i> -->
+										<img src="${pageContext.request.contextPath}/img/gongzuotai.png">
+									</a>
+								</li>
+								<li class="dropdown dropdown-quick-sidebar-toggler">
+									<a href='${pageContext.request.contextPath}/exit' class="dropdown-toggle">
+										<!-- <i class="iconfont icon-chain-broken"></i> -->
+										<img src="${pageContext.request.contextPath}/img/dianyuan.png">
+									</a>
+								</li>
+
+							</ul>
+					<!-- 提示栏结束 -->
+				</div>
+		<div class="main clearfix p1_margin" style="margin-top:20px">
 			<div class='top_left_p1'>
 				<div class="left">
 					<div>
@@ -125,19 +157,19 @@
 						
 			</div>
 		</div>
-		<div class="main p1_margin"  style="height:340px;">
+		<div class="main p1_margin"  style="height:300px;">
 			<div class="block">
 				<h2>压力和温度视图</h2>
-				<div class="block_chart" id="getLineChartP1_1" style="width:50%; height:300px; top:20px; float:left"></div>
-				<div class="block_chart" id="getLineChartP1_2" style="width:50%; height:300px; top:20px; float:left"></div>
+				<div class="block_chart" id="getLineChartP1_1" style="width:50%; height:260px; top:20px; float:left"></div>
+				<div class="block_chart" id="getLineChartP1_2" style="width:50%; height:260px; top:20px; float:left"></div>
 			</div>
 		</div>
-		<div class="main p1_margin"  style="height:340px;">
+		<div class="main p1_margin"  style="height:300px;">
 			<div class="block">
 				<h2>加速度视图</h2>
-				<div class="block_chart" id="getLineChartP1_3" style="width:33%; height:300px; top:20px; float:left"></div>
-				<div class="block_chart" id="getLineChartP1_4" style="width:33%; height:300px; top:20px; float:left"></div>
-				<div class="block_chart" id="getLineChartP1_5" style="width:33%; height:300px; top:20px; float:left"></div>
+				<div class="block_chart" id="getLineChartP1_3" style="width:33%; height:260px; top:20px; float:left"></div>
+				<div class="block_chart" id="getLineChartP1_4" style="width:33%; height:260px; top:20px; float:left"></div>
+				<div class="block_chart" id="getLineChartP1_5" style="width:33%; height:260px; top:20px; float:left"></div>
 			</div>
 		</div>
 		
@@ -1670,6 +1702,7 @@
 				return false;
 			}
 			window.clearInterval(job);
+			var sensorName = $('#sensorSelect option:selected') .val();
 			if(currentSensorName != sensorName){
 				 cleanArray();
 			}

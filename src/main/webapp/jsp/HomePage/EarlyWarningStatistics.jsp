@@ -13,7 +13,12 @@
 	<link href="${pageContext.request.contextPath}/HomeAssets/css/gif.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/HomeAssets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/HomeAssets/css/p3.css" rel="stylesheet" type="text/css" />
-
+	<style>
+		body {
+		  background-size:90% 70px;
+		
+		}
+	</style>
 	
 </head>
 <body>

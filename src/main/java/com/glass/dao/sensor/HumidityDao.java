@@ -11,4 +11,6 @@ public interface HumidityDao {
 	List<Humidity> getSensorHumidityist(Humidity entity);
 
 	List<Object> getHumidityCountManage(String name, Integer currentPage, Integer pageSize);
+	
+	List<Humidity> exportHumidityList();
 }

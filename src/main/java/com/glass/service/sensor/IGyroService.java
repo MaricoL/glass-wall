@@ -14,4 +14,6 @@ public interface IGyroService {
 	PageBean<StatisticalManagement> getGyroCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Gyro> syncGyroData(HashMap<String, Object> paramMap);
+
+	List<Gyro> getAllItems();
 }

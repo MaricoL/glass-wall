@@ -12,4 +12,6 @@ public interface TempertureDao {
 	List<Object> getTempertureCountManage(String name, Integer currentPage, Integer pageSize);
 
 	List<Temperture> syncTemperatureData(HashMap<String, Object> paramMap);
+	
+	List<Temperture> exportTemperatureList();
 }

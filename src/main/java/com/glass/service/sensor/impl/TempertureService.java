@@ -99,5 +99,11 @@ public class TempertureService implements ITempertureService {
 
 		return tempertureList;
 	}
+	
+	@Override
+	public List<Temperture> exportTemperatureList(){
+		List<Temperture> res = sensorDao.exportTemperatureList();
+		return res;
+	} 
 
 }

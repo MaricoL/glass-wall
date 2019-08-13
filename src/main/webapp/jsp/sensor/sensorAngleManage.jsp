@@ -47,15 +47,26 @@
 			<span>传感器倾斜角信息管理</span>
 		</div>
 
-		<span class="state_title">传感器名称：</span> <input class="state_input"
+		<%-- <span class="state_title">传感器名称：</span> <input class="state_input"
 			name="sensorName" value="${conditionEntity.sensorName }" id="sensorName" /> 
-
+ --%>
+ 		<span class="state_title">传感器名称：</span> 
+        <select id='sensorName' name="sensorName" class="state_select">
+		   <option value="">全部</option>
+			<c:forEach items="${nameList}" var="com" varStatus="status">
+				<option value="${com.num}"
+					<c:if test="${conditionEntity.sensorName== com.num}">selected</c:if>>${com.description}</option>
+			</c:forEach>
+		</select>
 		<div class="clearfix"></div>
 <%-- 		<c:if test="${fn:contains(buttonSession,'work_hr_new')==true}"> --%>
 	
 <%-- 		</c:if>
 
 		<c:if test="${fn:contains(buttonSession,'work_hr_query')==true}"> --%>
+			<button class="but_search" type="button" onclick="_export();">
+				<i class="iconfont icon-chaxun"></i>导出
+			</button>
 			<button class="but_search" type="button" onclick="_query();">
 				<i class="iconfont icon-chaxun"></i>查询
 			</button>
@@ -69,9 +80,10 @@
 					<tr>
 						<th width="5%">序号</th>
 						<th>传感器名称</th>
-						<th>值一</th>
-						<th>值二</th>
-						<th>值三</th>
+						<th>传感器位置</th>
+						<th>Angle_x_1</th>
+						<th>Angle_x_2</th>
+						<th>Angle_x_3</th>
 						<th>创建时间</th>						
 					</tr>
 					<c:if test="${not empty pageBean.items }">
@@ -79,6 +91,13 @@
 							<tr>
 								<td align="center">${status.index+1}</td>
 								<td align="center">${item.sensorName }</td>
+								<td align="center">
+									<c:forEach items="${nameList}" var="list" varStatus="status">
+										<c:if test="${item.sensorName == list.num}">
+											${list.description}
+										</c:if>
+									</c:forEach>
+								</td>
 								<td align="center">${item.valueone }</td>
 								<td align="center">${item.valuetwo }</td>
 								<td align="center">${item.valuethree }</td>
@@ -226,6 +245,48 @@
 		function _modifyHrInfo(id) {
 			var url = "${pageContext.request.contextPath}/hr/_modify?id=" + id;
 			window.open(url, "变更人事信息界面");
+		}
+		
+		// 导出数据
+		
+		
+		function _export(){
+			var url = '${pageContext.request.contextPath}/angle/export';
+	 		var form = document.forms[0];
+			form.action = url;
+			form.method = "POST";
+			form.submit(); 
+			
+			/* $.ajax({
+				type : 'get',
+				url : url,
+				dateType : 'json',
+				cache : false,
+				async : false,
+				success : function(data) {
+					if (data.flag == "1") {
+						/* win.successAlert(data.message,
+								
+								function() {
+									//window.close();
+								});
+
+						_query(); 
+						win.successAlert(data.message);
+						setTimeout(_query, 2e3)
+					} else {
+						parent.win.errorAlert("上报失败！"
+								+ data.message,
+								function() {
+								});
+					}
+				},
+				error : function() {
+					parent.win.errorAlert("上报失败！",
+							function() {
+							});
+				}
+			}); */
 		}
 	</script>
 

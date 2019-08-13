@@ -108,6 +108,11 @@ public class AccelationService implements IAccelationService {
 		return accelationList;
 	}
 
+	@Override
+	public List<Accelation> getAllItems() {
+		return accelationDao.getAllItems();
+	}
+
 	/*
 	 * @Override public List<Object> getAccrelationCountManage(Accelation entity,
 	 * Integer currentPage, Integer pageSize) {

@@ -69,6 +69,12 @@ public class BaseService implements IBaseService{
 		
 		sysBaseDao.delbaseById(id);
 	}
+
+	@Override
+	public List<SysBase> getByType(int i) {
+		// TODO Auto-generated method stub
+		return sysBaseDao.getByType(i);
+	}
 	
 	
 }
